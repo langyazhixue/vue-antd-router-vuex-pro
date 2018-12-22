@@ -1,0 +1,25 @@
+{
+  "name": "vue-admin-manage",
+  "version": "1.0.0",
+  "description": "Backend scaffold based on vue-element-admin",
+  "main": "main.js",
+  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:prod":"node build/build.js",
+    "dev":"wbpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "lint": "eslint --ext .js,.vue src",
+    "precommit": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/langyazhixue/vue-admin-manage.git"
+  },
+  "keywords": [],
+  
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/langyazhixue/vue-admin-manage/issues"
+  },
+  "homepage": "https://github.com/langyazhixue/vue-admin-manage#readme"
+}
