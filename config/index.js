@@ -4,7 +4,6 @@
 const path = require('path')
 const config = require('./prod.env')
 const assetPath = config.publishBase.replace(/"/g, '')
-
 module.exports = {
   dev:{
     assetsSubDirectory:'static',
@@ -16,7 +15,7 @@ module.exports = {
     port:9258,
     autoOpenBrowser:true,
     errorOverlay:true,
-    notifyOnErrors:false,
+    notifyOnErrors:true,
     poll:false,
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
@@ -30,7 +29,6 @@ module.exports = {
      // https://webpack.js.org/configuration/devtool/#development
      devtool: 'cheap-source-map',
      cssSourceMap: false
-
   },
   build: {
     index:path.resolve(__dirname,'../dist/index.html'),
@@ -54,6 +52,5 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report || false,
     // `npm run build:prod --generate_report`
     generateAnalyzerReport: process.env.npm_config_generate_report || false
-
   }
 }
