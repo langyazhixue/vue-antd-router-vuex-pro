@@ -1,8 +1,10 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const webpack = require('../config')
+const webpack = require('webpack')
+const consfig = require('../config')
 const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')

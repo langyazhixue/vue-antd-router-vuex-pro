@@ -1,5 +1,4 @@
 'use strict'
-
 const ora = require('ora') // 要用来实现node.js命令行环境的loading效果,和显示各种状态的图标等
 const rm = require('rimraf')
 const path = require('path')
@@ -52,7 +51,6 @@ rm(path.join(config.nbuild.assetsRoot),err => {
           index: ['index.html', '/']
         })
       )
-
     }
   })
 })

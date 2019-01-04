@@ -108,8 +108,3 @@ module.exports = {
     child_process: 'empty'
   }
 }
-
-
-// https://www.webpackjs.com/concepts/
-
-// https://webpack.docschina.org/configuration/
