@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const ora = require('ora') // 要用来实现node.js命令行环境的loading效果,和显示各种状态的图标等
 const rm = require('rimraf')
 const path = require('path')
@@ -8,13 +8,14 @@ const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 const connect = require('connect')
 var serveStatic = require('serve-static')
+
 const spinner = ora(
-  'building for ' + process.env.ENV_CONFIG + ' '
+  'building for ' + 'production'
 )
 spinner.start()
 
 // rimraf 删除 目录内容听
-rm(path.join(config.nbuild.assetsRoot),err => {
+rm(path.join(config.build.assetsRoot),err => {
   if(err) {
     throw err
   }

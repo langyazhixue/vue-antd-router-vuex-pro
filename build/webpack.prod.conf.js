@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const webpack = reuqire('webpack')
+const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
@@ -17,8 +17,11 @@ function resolve(dir) {
   return path.join(__dirname,'..',dir)
 }
 
+const seen = new Set()
+const nameLength = 4
+
 const webpackConfig = merge(baseWebpackConfig,{
-  mode:'production', // webpack 4 要有的
+  mode: 'production',
   module:{
     rules:utils.styleLoaders({
       sourceMap:config.build.sourceMap,
@@ -33,7 +36,7 @@ const webpackConfig = merge(baseWebpackConfig,{
   },
   plugins:[
     new webpack.DefinePlugin({
-      'process.env':require('../prod.env')
+      'process.env':require('../config/prod.env')
     }),
     new CleanWebpackPlugin(['dist']),
     // extract css into its own file
@@ -50,6 +53,22 @@ const webpackConfig = merge(baseWebpackConfig,{
       path:config.build.assetsRoot + config.build.assetsSubDirectory,
       minify:true // 有默认的配置项
     }),
+    new webpack.NamedChunksPlugin(chunk => {
+      if (chunk.name) {
+        return chunk.name
+      }
+      const modules = Array.from(chunk.modulesIterable)
+      if (modules.length > 1) {
+        const hash = require('hash-sum')
+        const joinedHash = hash(modules.map(m => m.id).join('_'))
+        let len = nameLength
+        while (seen.has(joinedHash.substr(0, len))) len++
+        seen.add(joinedHash.substr(0, len))
+        return `chunk-${joinedHash.substr(0, len)}`
+      } else {
+        return modules[0].id
+      }
+    }),
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // copy custom static assets
@@ -65,9 +84,8 @@ const webpackConfig = merge(baseWebpackConfig,{
   optimization:{
     minimize: true,
     splitChunks:{
-      name:true,
       chunks: 'all',
-      cacheGroup:{
+      cacheGroups:{
         libs: {
           name: 'chunk-libs',
           test: /[\\/]node_modules[\\/]/,
@@ -102,3 +120,4 @@ const webpackConfig = merge(baseWebpackConfig,{
     ]
   }
 })
+module.exports = webpackConfig

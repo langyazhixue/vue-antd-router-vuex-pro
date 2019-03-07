@@ -2,17 +2,15 @@
 const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
-const consfig = require('../config')
+const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-
 function resolve(dir) {
   return path.join(__dirname,'..',dir)
 }
-
 const HOST = process.env.HOST
 const PORT = process.env.POPRT && Number(process.env.PORT)
 
@@ -72,7 +70,7 @@ module.exports =  new Promise((resolve,reject) => {
         compilationSuccessInfo: {
           messages: [`Your application is running here: ${
             config.dev.https ? 'https' : 'http'}://${
-            onfig.dev.host}:${port}`],
+            config.dev.host}:${port}`],
         },
         onErrors: config.dev.notifyOnErrors
             ? utils.createNotifierCallback()

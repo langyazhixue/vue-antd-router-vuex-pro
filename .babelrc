@@ -6,7 +6,6 @@
       "node": "current"
     },
     "useBuiltIns": "usage"
-  }],
-  "stage-2"
-  ]
+  }]],
+  "plugins":["@babel/plugin-syntax-dynamic-import"]
 }

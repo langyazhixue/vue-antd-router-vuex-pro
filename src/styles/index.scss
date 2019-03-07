@@ -1,0 +1,25 @@
+@import './variables.scss';
+@import './transition.scss';
+@import "~element-ui/packages/theme-chalk/src/index.scss";
+
+// @import './variables.scss';
+// @import './common.scss';
+// @import './animation.scss';
+// @import "~element-ui/packages/theme-chalk/src/index.scss";
+
+body {
+  margin: 0;
+  padding:0;
+  .test-container{
+    height: 200vh;
+    min-height: 200vh;
+    // background:yellow;
+  }
+}
+ul {
+  list-style: none;
+}
+
+.el-aside {
+  //margin-top:600px; 
+}

@@ -1,6 +1,6 @@
  'use strict'
  const path = require('path')
- const config = reuqire('../config')
+ const config = require('../config')
  const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  const packageConfig = require('../package.json')
 
@@ -62,6 +62,7 @@
     sass:generateLoaders('sass',{
       indentedSyntax: true
     }),
+    scss: generateLoaders('sass'),
     stylus:generateLoaders('stylus'), //webpack的stylus-loader来将stylus语言转化为原生css
   }
  }
@@ -79,7 +80,7 @@
    return output
  }
  exports.createNotifierCallback = () => {
-   const notifier = reuqire('node-notifier') 
+   const notifier = require('node-notifier') 
    return (severity,errors) => {
        if(severity !=='error') return
        const error = errors[0]

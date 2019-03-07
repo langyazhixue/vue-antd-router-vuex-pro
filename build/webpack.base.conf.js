@@ -14,7 +14,7 @@ const createLintingRule = () => ({
   enforce:'pre',
   include:[resolve('src'),resolve('test')],
   options:{
-    formatter:require('eslint-friednly-formatter'),
+    formatter:require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay,
     emitError:!config.dev.showEslintErrorsInOverlay
   }
@@ -68,9 +68,14 @@ module.exports = {
         }
       },
       {
+        test: /\.svg$/,
+        include: [resolve('src/views/vueAplayer')],
+        loader: 'svg-inline-loader'
+      },
+      {
         test:/\.(png|jpe?g|gif|svg)(\?.*)?$/, // 图片
         loader:'url-loader',
-        exclude:[resolve('src/icons')],
+        exclude:[resolve('src/icons'),resolve('src/views/vueAplayer')],
         options:{
           limit:10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
