@@ -43,6 +43,7 @@ process.stdout.write('test' + '\n')
 
 // argv // argv 属性返回一个数组，由命令行执行脚本时的各个参数组成。它的第一个成员总是node，第二个成员是脚本文件名，其余成员是脚本文件的参数。
 
+// process.stdin  输入流
 console.log(process.argv)
 
 // execArgv  返回一个数组，成员是命令行下执行脚本时，在Node可执行文件与脚本文件之间的命令行参数。
@@ -86,6 +87,23 @@ process.stdout.write(process.cwd() + '\n', 'utf8')
 
 // kill(pid[,signal])  发送信号给进程. pid 是进程id，并且 signal 是发送的信号的字符串描述。信号名是字符串，比如 'SIGINT' 或 'SIGHUP'。如果忽略，信号会是 'SIGTERM'。
 
-process.kill('385')
+// process.kill('385')
 // nextTick(callback)
 
+// stdin  // 标准输入流，初始时是被暂停的状态。想要输入数据，首先必须恢复流，并手动编写流事件的响应函数
+process.stdin.setEncoding('utf8')
+
+process.stdin.on('readable', () => {
+  var chunk = process.stdin.read()
+  if (chunk !== null) {
+    process.stdout.write(`data: ${chunk}`)
+  }
+})
+
+process.stdin.on('data', (data) => {
+  process.stdout.write(`data: ${data}`)
+})
+
+process.stdin.on('end', () => {
+  process.stdout.write('end')
+})

@@ -1,6 +1,6 @@
+
 var url = require('url') // node url 模块
 var http = require('http')
-
 function start() {
   function onRequest(request, response) {
     console.log(url.parse(request.url))
@@ -11,7 +11,6 @@ function start() {
     response.write('Hello World')
     response.end()
   }
-
   http.createServer(onRequest).listen(8888)
   console.log('Server has started.')
 }
