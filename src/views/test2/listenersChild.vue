@@ -4,10 +4,11 @@
     v-bind ='$attrs'
     v-on="$listeners"
     />
+    <el-button @click='handlerForceUpdate'>
+      $forceUpdate
+    </el-button>
   </div>
-  <el-button @click='handlerForceUpdate'>
-    $forceUpdate
-  </el-button>
+  
 </template>
 <script>
 import MyChild from './child.vue'
