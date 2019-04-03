@@ -15,7 +15,6 @@ console.log(data)
 console.info(data)
 console.warn(data)
 console.timeEnd('test')
-
 function test() {
   console.trace()
   console.log(__filename)

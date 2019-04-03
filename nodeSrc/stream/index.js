@@ -3,6 +3,7 @@ var fs = require('fs')
 var zlib = require('zlib')
 // 写入流
 var data = 'tet'
+
 // 创建一个可以写入的流，写入到文件 output.txt 中 如果文件存在，那么会重新覆盖文件中的数据
 // const writerStream = fs.createWriteStream('input.txt')
 // writerStream.write(data, 'utf8') // 使用 utf8 编码写入数据

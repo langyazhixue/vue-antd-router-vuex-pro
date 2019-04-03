@@ -7,17 +7,14 @@
 //   setTimeout(function() {
 //     console.log('该代码不会执行')
 //   }, 0)
-
 //   console.log('退出码为:', code)
 // })
 // console.log('程序执行结束')
-
 // Signal 事件
 // 当进程接收到信号时就触发。信号列表详见标准的 POSIX 信号名，如 SIGINT、SIGUSR1 等。
 
 var url = require('url') // node url 模块
 var http = require('http')
-
 // function start() {
 //   function onRequest(request, response) {
 //     console.log(url.parse(request.url))

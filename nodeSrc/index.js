@@ -25,3 +25,5 @@ var fs = require('fs')
 // readerStream.pipe(writerStream)
 
 // console.log('结束')
+
+var fs = 
