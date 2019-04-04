@@ -34,6 +34,7 @@ var copyFile = function(srcPath, tarPath, cb) {
 // 复制目录以及子目录
 var copyFolder = function(srcDir, tarDir, cb) {
   fs.readdir(srcDir, function(err, files) {
+    // 读取目录
     var count = 0
     var checkEnd = function() {
       ++count === files.length && cb && cb()
@@ -45,7 +46,6 @@ var copyFolder = function(srcDir, tarDir, cb) {
     files.forEach(function(file) {
       var srcPath = path.join(srcDir, file)
       var tarPath = path.join(tarDir, file)
-
       fs.stat(srcPath, function(err, stats) {
         if (err) {
           return

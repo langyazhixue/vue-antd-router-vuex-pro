@@ -126,7 +126,6 @@ var fs = require('fs')
 // })
 
 // 创建目录  fs.mkdir(path[, options], callback)
-
 // path - 文件路径。
 // options 参数可以是：
 // recursive - 是否以递归的方式创建目录，默认为 false。
@@ -160,7 +159,6 @@ var fs = require('fs')
 
 // 删除目录 fs.rmdir(path,callback)
 // 执行前创建一个空的 `/test/test` 目录  ./test/test  下面应该没有 目录
-
 // fs.rmdir('./test/test/q', function(err) {
 //   if (err) {
 //     return console.error(err)
