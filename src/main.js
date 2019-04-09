@@ -6,8 +6,10 @@ import directive from '@/directive/index'
 import '@/styles/index.scss'
 import store from './store'
 import  './permission'
+import http from '@/utils/http'
 // import Test from '@/plugins/test'
 Vue.use(Element)
+Vue.use(http)
 // Vue.use(Test)
 // 注册指令
 Object.keys(directive).forEach((key) => {

@@ -88,6 +88,7 @@
     "axios": "^0.18.0",
     "element-ui": "^2.4.11",
     "file-loader": "^3.0.1",
+    "js-cookie": "^2.2.0",
     "lodash": "^4.17.11",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",

@@ -8,7 +8,16 @@ module.exports = {
   dev:{
     assetsSubDirectory:'static',
     assetsPublicPath:'/',
-    proxyTable:{},
+    proxyTable:{
+      '/server': { // 鉴权系统
+        target: 'http://localhost:8081',
+        //target: 'http://172.27.39.35:9101',
+        changeOrigin: true,
+        pathRewrite: {
+          // '^/iam': '/iam'
+        }
+      }
+    },
     // can be overwritten by process.env.HOST
     // if you want dev by ip, please set host: '0.0.0.0'
     host:'0.0.0.0',
