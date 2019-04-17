@@ -6,58 +6,11 @@ Vue.use(VueRouter)
 const constantRouterMap = [
   {
     path: '',
-    redirect: '/test/test1'
+    redirect: '/login'
   },
   {
     path: '/login',
-    component: () => import('@/views/login/index'),
-    alias: '/ttt1',
-    props: {
-      testProps: 1111
-    }
-  },
-  {
-    path: '/test',
-    redirect: '/test/test1',
-    component: Layout,
-    children: [
-      {
-        path: 'test1',
-        name: 'test1',
-        component: () => import('@/views/test1/index')
-      },
-      {
-        path: 'test2',
-        name: 'test2',
-        component: () => import('@/views/test2/index')
-      }
-    ]
-  },
-  {
-    path: '/test',
-    component: Layout,
-    children: [
-      {
-        path: 'test4',
-        name: 'test4',
-        component: () => import('@/views/test4/index')
-      },
-    ]
-  },
-  {
-    path: '/other',
-    redirect: '/other/test3',
-    component: Layout,
-    children: [
-      {
-        path: 'test3',
-        name: 'test3',
-        component: () => import('@/views/test3/index'),
-        query:{
-          name:'test'
-        }
-      }
-    ]
+    component:() => import('@/views/login/index'),
   },
   {
     path: '*',
@@ -65,6 +18,7 @@ const constantRouterMap = [
     name: 'errPage'
   }
 ]
+
 const router = new VueRouter({
   mode: "history",
   routes: constantRouterMap,

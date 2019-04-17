@@ -2,7 +2,7 @@
  * 针对业务对axios做简单的封装
  */
 import axios from 'axios'
-import { Message } from 'element-ui'
+import { Message } from 'iview'
 // import apiMap from '@/api/index'
 // import router from '@/router/index'
 // import logout from '@/utils/logout.js'

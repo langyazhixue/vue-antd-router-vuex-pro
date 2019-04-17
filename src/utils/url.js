@@ -1,7 +1,6 @@
 
-const URI = require('urijs')
-
-
+// 使用node工具库
+const { URL, URLSearchParams } = require('url')
 export const pathParameterToJson = function(path) {
   const result = {}
   const paramList = path.split('&')
@@ -13,6 +12,7 @@ export const pathParameterToJson = function(path) {
 }
 
 export const getParam = function(oldUrl) {
-  const url = URI(oldUrl)
-  return pathParameterToJson(url._parts.query)
+  const myURL = new URL(oldUrl)
+  const params = myURL.searchParams.toString()
+  return pathParameterToJson(params)
 }

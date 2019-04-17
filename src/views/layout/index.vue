@@ -10,7 +10,7 @@
 <script>
 import AppMain from './components/appMain.vue'
 import Header from './components/header.vue'
-import SideNav from './components/sideNav.vue'
+import SideNav from './components/sideNav/index'
 export default {
   name: 'Layout',
   components: {

@@ -1,21 +1,18 @@
 import Vue from 'vue'
-import router from './router'
-import Element from 'element-ui'
 import App from './App'
-import directive from '@/directive/index'
-import '@/styles/index.scss'
+import router from './router'
 import store from './store'
-import  './permission'
+import iView from 'iview'
+import directive from '@/directive/index'
+import 'normalize.css'
+import '@/styles/index.less'
 import http from '@/utils/http'
-// import Test from '@/plugins/test'
-Vue.use(Element)
+
+Vue.use(iView)
 Vue.use(http)
-// Vue.use(Test)
-// 注册指令
 Object.keys(directive).forEach((key) => {
   Vue.directive(key, directive[key])
 })
-// Vue.myGlobalMethod()
 new Vue({
   el: '#app',
   router,
