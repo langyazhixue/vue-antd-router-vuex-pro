@@ -51,7 +51,6 @@ const httpInstance = {
     const { silent } = options
     return new Promise((resolve, reject) => {
       instance.then(response => {
-        debugger
         const responseData = response.data
         if (responseData.errmsg) {
           showErrorMessage(responseData.errmsg)
@@ -60,7 +59,6 @@ const httpInstance = {
           resolve(responseData)
         }
       }).catch(err => {
-        debugger
         if (err.code === 'ECONNABORTED') { // 超时
           if (!silent) {
             showErrorMessage('请求超时')

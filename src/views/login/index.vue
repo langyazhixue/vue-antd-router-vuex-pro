@@ -37,7 +37,7 @@ export default {
     return {
       formData:{
         name:'admin',
-        password:'123456'
+        password:'12345'
       },
       myFormRule:{
         name:[
