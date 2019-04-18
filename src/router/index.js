@@ -20,7 +20,7 @@ const constantRouterMap = [
 ]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",
   routes: constantRouterMap,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

@@ -9,8 +9,16 @@ module.exports = {
     assetsSubDirectory:'static',
     assetsPublicPath:'/',
     proxyTable:{
+      '/user': { // 鉴权系统
+        target: 'http://localhost:3000',
+        //target: 'http://172.27.39.35:9101',
+        changeOrigin: true,
+        pathRewrite: {
+          // '^/iam': '/iam'
+        }
+      },
       '/server': { // 鉴权系统
-        target: 'http://localhost:8081',
+        target: 'http://localhost:3000',
         //target: 'http://172.27.39.35:9101',
         changeOrigin: true,
         pathRewrite: {

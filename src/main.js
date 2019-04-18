@@ -7,9 +7,15 @@ import directive from '@/directive/index'
 import 'normalize.css'
 import '@/styles/index.less'
 import http from '@/utils/http'
+import api from '@/api/index'
 
-Vue.use(iView)
+Vue.use(iView,{
+  transfer: true,
+  size: 'large',
+})
 Vue.use(http)
+Vue.use(api)
+
 Object.keys(directive).forEach((key) => {
   Vue.directive(key, directive[key])
 })

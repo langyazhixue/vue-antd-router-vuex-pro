@@ -8,41 +8,27 @@ import { Message } from 'iview'
 // import logout from '@/utils/logout.js'
 // import { getAuthModel } from '@/utils/auth'
 // import store from '@/store/index'
-
 // import local from '@/utils/local'
 
 const axiosInstance = axios.create()
+/* 
+  设置超时15秒
+*/
 axiosInstance.defaults.timeout = 15 * 1000
+axiosInstance.defaults.headers['Content-Type'] = 'application/json; charset=utf-8'
 
+/* 
+  error弹窗
+*/
 const showErrorMessage = function(msg) {
-  Message.error({ message: msg })
+  Message.error({ content: msg })
 }
 
+/* 
+  request
+*/
 axiosInstance.interceptors.request.use(
   config => {
-    config.headers = {
-      'Content-type':'application/json'
-    }
-    // if (config.url.indexOf(apiMap.login) === -1) {
-      // const headers = getAuthModel()
-      // if (config.url.indexOf(apiMap.refreshToken) !== -1) {
-      //   headers['Authorization'] = store.state.user.base.refreshToken
-      // }
-      // Object.assign(config.headers, headers)
-
-      /* const diffInSeconds = Math.floor((local.get('expire') - new Date().getTime()) / 1000)
-      const refDiffInSeconds = Math.floor((local.get('refreshExpire') - new Date().getTime()) / 1000)
-      if (diffInSeconds > 0) {
-        config.headers.Authentication = local.get('token') || ''
-      } else if (diffInSeconds < 0 && refDiffInSeconds > 0) {
-        config.headers.Authentication = local.get('refreshToken') || ''
-      } else if (diffInSeconds < 0 && refDiffInSeconds < 0) {
-        showErrorMessage('请重新登陆')
-        logout()
-      } */
-    //   config.headers.Authentication = local.get('token') || ''
-    //   config.headers.userId = local.get('userId') || ''
-    // }
     return config
   },
   error => {
@@ -50,6 +36,9 @@ axiosInstance.interceptors.request.use(
   }
 )
 
+/* 
+  response
+*/
 axiosInstance.interceptors.response.use(
   response => response,
   error => {
@@ -57,14 +46,12 @@ axiosInstance.interceptors.response.use(
   }
 )
 
-/**
- * 返回的error格式 { message: '' }
- */
 const httpInstance = {
   handleResponse(instance, options = {}) {
     const { silent } = options
     return new Promise((resolve, reject) => {
       instance.then(response => {
+        debugger
         const responseData = response.data
         if (responseData.errmsg) {
           showErrorMessage(responseData.errmsg)
@@ -73,6 +60,7 @@ const httpInstance = {
           resolve(responseData)
         }
       }).catch(err => {
+        debugger
         if (err.code === 'ECONNABORTED') { // 超时
           if (!silent) {
             showErrorMessage('请求超时')
@@ -85,15 +73,17 @@ const httpInstance = {
             logout()
           } else {
             let errorResponse = ''
-            if (statusCode === 500) {
+            if(statusCode === 404) {
+              errorResponse = 'Not Found'
+            } else if (statusCode === 500) {
               errorResponse = err.response.data.message || '网络异常'
             } else {
               errorResponse = err.response.data.message
             }
-            reject({ message: errorResponse })
             if (!silent) {
               showErrorMessage(errorResponse || '哎呀 网络塞车了 请客官重新操作')
             }
+            reject({ message: errorResponse })
           }
         }
       })
@@ -113,8 +103,21 @@ const httpInstance = {
   }
 }
 
-export const http = httpInstance
 
+// get(url, options) {
+//   return this.handleResponse(axiosInstance.get(url, options), options)
+// },
+// post(url, data, options) {
+//   return this.handleResponse(axiosInstance.post(url, data, options), options)
+// },
+// put(url, data, options) {
+//   return this.handleResponse(axiosInstance.put(url, data, options), options)
+// },
+// delete(url, options) {
+//   return this.handleResponse(axiosInstance.delete(url, options), options)
+// }
+
+export const http = httpInstance
 export default {
   install(Vue) {
     Vue.prototype.$http = httpInstance
