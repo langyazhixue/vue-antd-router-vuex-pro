@@ -3,19 +3,39 @@ import Vue from 'vue'
 import Layout from '@/views/layout/index'
 import { pathParameterToJson } from '@/utils/url'
 Vue.use(VueRouter)
-const constantRouterMap = [
-  {
-    path: '',
-    redirect: '/login'
-  },
+
+/**
+ * hidden: true      if `hidden:true` will not show in the sidebar(default is false) 
+ * meta :{
+ *  title: 'title'               the name show in submenu and breadcrumb (recommend set)
+    icon: 'svg-name'             the icon show in the sidebar
+ * }
+*/
+export const constantRouterMap = [
   {
     path: '/login',
     component:() => import('@/views/login/index'),
+    name:'Login',
+    hidden: true
+  },
+  {
+    path:'',
+    component: Layout,
+    redirect: 'dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'DashBoard',
+        meta: { title: 'dashboard', icon: 'dashboard'}
+      }
+    ],
   },
   {
     path: '*',
     component: () => import('@/views/404/index'),
-    name: 'errPage'
+    name: 'errPage',
+    hidden:true
   }
 ]
 

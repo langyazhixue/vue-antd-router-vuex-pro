@@ -1,12 +1,16 @@
 <template>
-  <el-main>
-    <!-- <transition name="fade-transform" mode="out-in">
+  <Content> 
+    <router-view />
+  </Content>
+
+  <!-- <el-main>
+    <transition name="fade-transform" mode="out-in">
       <keep-alive>
         <router-view />
       </keep-alive>
-    </transition> -->
+    </transition>
      <router-view />
-  </el-main>
+  </el-main> -->
 </template>
 <script>
 export default {

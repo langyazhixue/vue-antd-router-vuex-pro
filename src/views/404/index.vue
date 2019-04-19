@@ -1,5 +1,5 @@
 <template>
-  <div class='err'>4041111</div>
+  <div class='err'>404</div>
 </template>
 <script>
 export default {

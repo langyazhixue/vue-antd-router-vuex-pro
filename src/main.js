@@ -19,6 +19,11 @@ Vue.use(api)
 Object.keys(directive).forEach((key) => {
   Vue.directive(key, directive[key])
 })
+
+/**
+ * message bus
+ */
+Vue.prototype.$bus = new Vue() 
 new Vue({
   el: '#app',
   router,
