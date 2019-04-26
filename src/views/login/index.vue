@@ -1,66 +1,94 @@
 <template>
   <div class='login--container'>
-    <Form 
-      ref="myForm" 
-      :label-width="80"
-      :rules="myFormRule" 
-      :model="formData"
-    >
-      <h2 class='login--container--title'>系统登陆</h2>
-      <FormItem prop="name" label="用户名">
-        <Input 
-          type="text" 
-          v-model.trim="formData.name" 
-          placeholder="请输入用户名"
+    <a-form
+    :form="form"
+    @submit="handleSubmit"
+  >
+    <h2 class='login--container--title'>系统登陆</h2>
+      <!-- 用户名 -->
+      <a-form-item  
+        label="用户名"  
+        :label-col="formItemLayout.labelCol" 
+        :wrapper-col="formItemLayout.wrapperCol" 
+      >
+        <a-input
+          v-decorator="[
+            'name',
+            { rules: [{ required: true, message: '请输入用户名' }],
+              initialValue:initialFormData.name
+            }
+          ]"
+        />
+      </a-form-item>
+
+      <!-- 密码 -->
+      <a-form-item
+        label="用户名"
+        :label-col="formItemLayout.labelCol" 
+        :wrapper-col="formItemLayout.wrapperCol"
+      >
+        <a-input
+          type='password'
+          v-decorator="[
+            'password',
+            { rules: [{ required: true, message: '请输入密码' }],
+              initialValue:initialFormData.password
+            }
+          ]"
+        />
+      </a-form-item>
+
+      <!-- 按钮 -->
+      <a-form-item
+        :wrapper-col="formTailLayout.wrapperCol"
+      >
+        <a-button
+          type="primary"
+          html-type="submit"
         >
-          <Icon type="ios-person-outline" slot="prepend"></Icon>
-        </Input>
-      </FormItem>
-      <FormItem prop="password" label="密码">
-        <Input 
-          type="password" 
-          v-model.trim="formData.password" 
-          placeholder="请输入密码">
-          <Icon type="ios-lock-outline" slot="prepend"></Icon>
-        </Input>
-      </FormItem>
-      <FormItem class='login--container--footer'>
-        <Button type="primary" @click="handlerSubmit('myForm')">登陆</Button>
-      </FormItem>
-    </Form>
+          登陆
+        </a-button>
+      </a-form-item>
+    </a-form>
   </div>
 </template>
 <script>
+
+const formItemLayout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 20 },
+}
+const formTailLayout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 20, offset: 4 },
+}
 export default {
   name:'LoginView',
   data(){
     return {
-      formData:{
+      form: this.$form.createForm(this),
+      formItemLayout,
+      formTailLayout,
+      initialFormData:{
         name:'admin',
         password:'123456'
-      },
-      myFormRule:{
-        name:[
-          { required: true, message: '请输入用户名', trigger: 'blur' }
-        ],
-        password:[
-          { required: true, message: '请输入密码', trigger: 'blur' }
-        ]
       }
     }
   },
   methods:{
-    handlerSubmit(name){
-      this.$refs[name].validate((valid) => {
-        if (valid) {
-          this.$http.post(this.$api.login,this.formData)
-            .then(res => {
-              this.$Message.success(res.message);
-            })
-            .catch(err =>{
-              console.log(err)
-            })
+    handleSubmit (e) {
+      e.preventDefault();
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values);
         }
+        this.$http.post(this.$api.login,values)
+          .then(res => {
+
+          })
+          .catch(_ => {
+            console.log(_)
+          })
       })
     }
   }
@@ -74,7 +102,7 @@ export default {
   width: 100%;
   background-color:@primary--login--bg;
   overflow: hidden;
-  .ivu-form {
+  .ant-form {
     width: 400px;
     padding-top:100px;
     margin: 0 auto;
@@ -82,6 +110,7 @@ export default {
     .login--container--title{
       width: 100%;
       text-align: center;
+      color:#fff;
       margin-bottom: 40px;
       letter-spacing: 5px;
     }
@@ -91,24 +120,24 @@ export default {
 
 <style lang="less">
 .login--container {
-  .ivu-form  {
-    .ivu-form-item  {
-      .ivu-form-item-label {
+  .ant-form {
+    .ant-form-item  {
+      .ant-form-item-label label {
         color:#fff;
       }
     }
-    .login--container--footer {
-      float: right;
-      width:100%;
-      .ivu-form-item-content{
-        width: 400px - 80px;
-        display: table;
-        border-collapse: separate;
-        .ivu-btn-primary {
-          width:400px - 80px;
-        }
-      }
-    }
+    // .login--container--footer {
+    //   float: right;
+    //   width:100%;
+    //   .ant-form-item-content{
+    //     width: 400px - 80px;
+    //     display: table;
+    //     border-collapse: separate;
+    //     .ivu-btn-primary {
+    //       width:400px - 80px;
+    //     }
+    //   }
+    // }
   }
 }
 </style>

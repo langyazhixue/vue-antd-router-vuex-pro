@@ -1,10 +1,10 @@
 <template>
   <div>
-    引导页面
+    文档页面
   </div>
 </template>
 <script>
 export default {
-  name:'guide'
+  name:'DocumentView'
 }
 </script>

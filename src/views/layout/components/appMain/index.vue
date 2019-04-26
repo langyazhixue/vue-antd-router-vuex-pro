@@ -1,8 +1,8 @@
 <template>
-  <Content> 
-    <router-view />
-  </Content>
 
+<a-layout-content>
+  <router-view />
+</a-layout-content>
   <!-- <el-main>
     <transition name="fade-transform" mode="out-in">
       <keep-alive>

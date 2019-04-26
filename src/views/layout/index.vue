@@ -1,25 +1,24 @@
 <template>
-  <div clss='layout'>
-    <Layout>
-      <SideNav/>
-      <Layout>
-          <Header/>
-          <AppMain/>
-      </Layout>
-    </Layout>
-  </div>
+    <a-layout class='app--layout--container'>
+        <app-header/>
+      <a-layout>
+        <app-side-nav/>
+        <app-main/>
+      </a-layout>
+    </a-layout>
 </template>
 <script>
-import AppMain from './components/appMain'
-import Header from './components/appHeader/index'
-import SideNav from './components/sideNav/index'
+import AppMain from './components/appMain/index'
+import AppHeader from './components/appHeader/index'
+import AppSideNav from './components/sideNav/index'
 export default {
-  name: 'Layout',
+  name: 'AppLayout',
   components: {
     AppMain,
-    Header,
-    SideNav
+    AppHeader,
+    AppSideNav
   }
 }
 </script>
+
 

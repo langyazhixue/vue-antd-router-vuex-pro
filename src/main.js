@@ -2,17 +2,19 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import iView from 'iview'
+import Antd from 'ant-design-vue'
 import directive from '@/directive/index'
 import 'normalize.css'
 import '@/styles/index.less'
+import '@/assets/fonts/iconfont.js'
 import http from '@/utils/http'
 import api from '@/api/index'
 
-Vue.use(iView,{
-  transfer: true,
-  size: 'large',
-})
+// globalComponent 
+import SvgIcon from '@/components/svgIcon'// svg组件
+Vue.component(SvgIcon.name, SvgIcon)
+
+Vue.use(Antd)
 Vue.use(http)
 Vue.use(api)
 

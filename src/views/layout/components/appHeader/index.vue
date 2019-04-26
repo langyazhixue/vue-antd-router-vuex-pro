@@ -1,30 +1,34 @@
 <template>
-  <Header :style="{padding: 0}" class="layout--header--bar">
-    <div class='layout--header--top'>
-      <div class='layout--header--top--left'>
-        <Icon 
-          @click.native="_collapsedSider" 
-          :class="rotateIcon" 
-          :style="{margin: '0 20px'}" 
-          type="md-menu" 
-          size="24">
-        </Icon>
-        <span>面包屑</span>
+  <a-layout-header
+  theme='light'
+  class='app--layout--header--container'
+  >
+      <div class='app--layout--header--left'>
+        <app-logo-view/>
       </div>
-      <div class='layout--header--top--right'>
-        <span>全屏</span>
-        <span>换肤</span>
+      <div class='app--layout--header--right'>
+
       </div>
-    </div>
-  </Header>
+  </a-layout-header>
 </template>
 <script>
 import { mapMutations } from 'vuex'
+import AppLogoView from './components/logo'
 export default {
-  name: 'Header',
+  name: 'AppHeader',
+  data(){
+    return {
+      styleObject:{
+        'height':'84px'
+      }
+    }
+  },
+  components:{
+    AppLogoView
+  },
   computed:{
     isCollapsed(){
-      return this.$store.app.isCollapsed
+      return this.$store.state.app.isCollapsed
     }
   },
   methods:{
@@ -40,13 +44,5 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.layout--header--bar {
-  .layout--header--top {
-    display: flex;
-    justify-content: space-between;
-    .layout--header--top--right,.layout--header--top--left {
-      padding: 0 20px;
-    }
-  }
-}
+
 </style>

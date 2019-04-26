@@ -1,38 +1,34 @@
 <template>
-  <Sider 
-    hide-trigger   
-    :width='180' 
-    collapsible 
-    :collapsed-width='78' 
-    v-model='isCollapsed'
-    ref='appSide'
+  <a-layout-sider
+    theme='light'
   >
-     <Menu 
-     mode='vertical'
-     theme='dark'
-     accordion
+    <a-menu 
+      theme='light'
+      mode="inline"
+      :inlineCollapsed="isCollapsed"
      >
       <side-bar-item 
-        v-for = '(route,$index) in routerMap'
+        v-for = '(route) in routerMap'
         :route='route'
-        :key='$index'
+        :key='route.path'
+        :base-path="route.path"
       />
-     </Menu>
-  </Sider>
+     </a-menu>
+  </a-layout-sider>
 </template>
 <script>
-import SideBarItem from './component/sideBarItem'
+import SideBarItem from './components/sideBarItem'
 export default {
-  name: 'SideNav',
+  name: 'AppSideNav',
   components:{
     SideBarItem
   },
   computed:{
     isCollapsed(){
-      return this.$store.app.isCollapsed
+      return this.$store.state.app.isCollapsed
     },
     routerMap(){
-      return this.$store.app.routerMap
+      return this.$store.state.app.routerMap
     }
   }
 }

@@ -1,0 +1,35 @@
+
+.app--layout--container{
+  > .ant-layout-header{
+    height: @header-height;
+    background-color: @header-bg;
+    z-index: 10;
+    padding:0;
+    .shadow;
+  }
+  > .ant-layout-has-sider {
+    .ant-layout-sider{
+      min-height: ~"calc(100vh - @{header-height})";
+      height: ~"calc(100vh - @{header-height})";
+      background-color: @side-bg;
+      overflow: scroll;
+    }
+    .ant-layout-content{
+      background-color: @content-bg;
+      min-height: ~"calc(100vh - @{header-height})";
+      height: ~"calc(100vh - @{header-height})";
+      overflow: scroll;
+      border-left: 1px solid @shadow;
+    }
+  }
+  .app--layout--header--container{
+    display: flex;
+    justify-content: space-between;
+    .app--layout--header--left{
+      width: @side-width;
+    }
+    .app--layout--header--right{
+      flex: 1 1 auto;
+    }
+  } 
+}

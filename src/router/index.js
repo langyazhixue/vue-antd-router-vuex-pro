@@ -1,7 +1,8 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-import Layout from '@/views/layout/index'
+import AppLayout from '@/views/layout/index'
 import { pathParameterToJson } from '@/utils/url'
+import componentsRouter from './modules/components'
 Vue.use(VueRouter)
 
 /**
@@ -19,18 +20,59 @@ export const constantRouterMap = [
     hidden: true
   },
   {
+    path:'/',
+  redirect:'/dashboard'
+  },
+  {
     path:'',
-    component: Layout,
-    redirect: 'dashboard',
+    component:AppLayout ,
     children: [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'DashBoard',
-        meta: { title: 'dashboard', icon: 'dashboard'}
+        meta: { title: '首页', icon: 'dashboard'}
       }
     ],
   },
+  {
+    path:'/documentation',
+    component: AppLayout,
+
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Documentation',
+        meta: { title: '文档', icon: 'dashboard'}
+      }
+    ],
+  },
+  {
+    path:'/guide',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/guide/index'),
+        name: 'Guide',
+        meta: { title: '引导页', icon: 'dashboard'}
+      }
+    ],
+  },
+  {
+    path: '/icon',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/svgIcons/index'),
+        name: 'Icons',
+        meta: { title: 'Icons', icon: 'icon'}
+      }
+    ]
+  },
+  // componentsRouter,
   {
     path: '*',
     component: () => import('@/views/404/index'),

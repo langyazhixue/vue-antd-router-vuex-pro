@@ -2,7 +2,7 @@
  * 针对业务对axios做简单的封装
  */
 import axios from 'axios'
-import { Message } from 'iview'
+// import { Message } from 'antd'
 // import apiMap from '@/api/index'
 // import router from '@/router/index'
 // import logout from '@/utils/logout.js'
@@ -21,7 +21,8 @@ axiosInstance.defaults.headers['Content-Type'] = 'application/json; charset=utf-
   error弹窗
 */
 const showErrorMessage = function(msg) {
-  Message.error({ content: msg })
+  console.log('err')
+  // Message.error({ content: msg })
 }
 
 /* 
