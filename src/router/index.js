@@ -21,7 +21,8 @@ export const constantRouterMap = [
   },
   {
     path:'/',
-  redirect:'/dashboard'
+    redirect:'/dashboard',
+    hidden: true
   },
   {
     path:'',
@@ -31,7 +32,7 @@ export const constantRouterMap = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'DashBoard',
-        meta: { title: '首页', icon: 'dashboard'}
+        meta: { title: '首页', icon: 'iconshiyongwendang'}
       }
     ],
   },
@@ -44,7 +45,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/dashboard/index'),
         name: 'Documentation',
-        meta: { title: '文档', icon: 'dashboard'}
+        meta: { title: '文档', icon: 'iconshiyongwendang'}
       }
     ],
   },
@@ -56,7 +57,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/guide/index'),
         name: 'Guide',
-        meta: { title: '引导页', icon: 'dashboard'}
+        meta: { title: '引导页', icon: 'iconshiyongwendang'}
       }
     ],
   },
@@ -68,7 +69,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/svgIcons/index'),
         name: 'Icons',
-        meta: { title: 'Icons', icon: 'icon'}
+        meta: { title: 'Icons', icon: 'iconshiyongwendang'}
       }
     ]
   },

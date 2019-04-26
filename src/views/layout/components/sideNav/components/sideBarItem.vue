@@ -1,49 +1,13 @@
 <template>
-  <div class='side--bar--item' v-if="!route.hidden&&route.children">
-    <template v-if="hasOneShowingChild(route.children, route) && !onlyOneChild.children">
-        <a-menu-item 
-          :key ='onlyOneChild.name ||onlyOneChild.path'
-        >
-        <app-item
-          :icon='onlyOneChild.meta.icon'
-          :title='onlyOneChild.meta.title'
-        />
-      </a-menu-item>
-    </template>
-    <template v-else >
-      <a-submenu >
-        <!-- title -->
-        <template slot='title'>
-          <app-item
-          v-if='route.meta'
-          :icon='route.meta.icon'
-          :title='route.meta.title'
-        />
-        </template>
-        <!--  -->
-        <template
-          v-for='(child) in route.children'
-        >
-          <side-bar-Item
-            v-if="child.children&&child.children.length>0"
-            :route='child'
-            :key='child.path'
-            class='nest-menu'
-            :base-path="resolvePath(child.path)"
-        />
-          <a-menu-item  
-            v-else
-            v-if ="!child.hidden"
-            :key='child.name || child.path'
-          >
-            <app-item
-              :icon='onlyOneChild.meta.icon'
-              :title='onlyOneChild.meta.title'
-            />
-          </a-menu-item>
-        </template>
-      </a-submenu>
-    </template>
+  <div>
+    <a-menu-item key="1">
+      <a-icon type="pie-chart" />
+      <span>Option 1</span>
+    </a-menu-item>
+    <a-menu-item key="2">
+      <a-icon type="desktop" />
+      <span>Option 2</span>
+    </a-menu-item>
   </div>
 </template>
 <script>
@@ -53,7 +17,7 @@ import AppItem from './item'
 export default {
   name:'SideBarItem',
   props:{
-    route:{
+    routeItem:{
       reuqired:true,
       type:Object
     },
@@ -81,6 +45,7 @@ export default {
           return true
         }
       })
+      debugger
       if(showingChildren.length === 1) {
         return true
       } 

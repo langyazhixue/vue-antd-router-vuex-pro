@@ -8,10 +8,10 @@
       :inlineCollapsed="isCollapsed"
      >
       <side-bar-item 
-        v-for = '(routeItem) in routerMap'
-        :routeItem='routeItem'
-        :key='routeItem.path'
-        :base-path="routeItem.path"
+        v-for = '(route) in routerMap'
+        :route='route'
+        :key='route.path'
+        :base-path="route.path"
       />
      </a-menu>
   </a-layout-sider>
@@ -28,19 +28,7 @@ export default {
       return this.$store.state.app.isCollapsed
     },
     routerMap(){
-      let router = this.$store.state.app.routerMap
-      return this.filterRoute(router)
-    }
-  },
-  methods:{
-    filterRoute(list) {
-      let res = []
-      list.forEach(item => {
-        if(!item.hidden && item.children && item.children.length > 0) {
-          res.push(item)
-        }
-      })
-      return res
+      return this.$store.state.app.routerMap
     }
   }
 }
