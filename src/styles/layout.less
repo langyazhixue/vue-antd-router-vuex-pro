@@ -13,6 +13,23 @@
       height: ~"calc(100vh - @{header-height})";
       background-color: @side-bg;
       overflow: scroll;
+      .ant-menu-dark{
+        background: @side-bg;
+        color:@white;
+        .ant-menu-item{
+          color:@white;
+        }
+        .ant-menu-item-active{
+          color:@primary-color;
+        }
+        .ant-menu-item-selected{
+          color:@white !important;
+        }
+        .ant-menu-inline.ant-menu-sub {
+          background: @side-sub-bg;
+          box-shadow:none;
+        }
+      }
     }
     .ant-layout-content{
       background-color: @content-bg;

@@ -3,7 +3,7 @@
     theme='light'
   >
     <a-menu 
-      theme='light'
+      theme='dark'
       mode="inline"
       :inlineCollapsed="isCollapsed"
      >
