@@ -5,6 +5,8 @@
     <a-menu 
       theme='dark'
       mode="inline"
+      :defaultSelectedKeys='defaultSelectedKeys'
+      :defaultOpenKeys='defaultOpenKeys'
       :inlineCollapsed="isCollapsed"
      >
     <template
@@ -14,7 +16,7 @@
         <a-menu-item
           @click='goToComponent'
           v-if='route.children && route.children.length ===1' 
-          :key ='route.children[0].key'
+          :key ='resolvePath(route.path,route.children[0].path)'
           :path='resolvePath(route.path,route.children[0].path)'
         >
         <app-item
@@ -24,7 +26,7 @@
       </a-menu-item>
       <!-- 有子菜单 -->
       <a-sub-menu 
-        :key='route.key'
+        :key='route.path'
         v-else
       >
         <span slot='title'>
@@ -38,7 +40,7 @@
           >
             <a-menu-item
             @click='goToComponent'
-            :key ='child.key'
+            :key ='resolvePath(route.path,child.path)'
             v-if='!child.hiddex'
             :path = 'resolvePath(route.path,child.path)'
             >
@@ -73,6 +75,14 @@ export default {
       let router = this.$store.state.app.routerMap
       const routerArrPure = this.filterRouter(router)
       return routerArrPure
+    },
+    defaultSelectedKeys(){
+      let arr = []
+      arr.push(this.$route.path)
+      return arr
+    },
+    defaultOpenKeys(){
+      return []
     }
   },
   methods:{
