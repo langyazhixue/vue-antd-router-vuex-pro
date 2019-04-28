@@ -6,17 +6,19 @@
 
 <script>
 export default {
-  name:'LinkView',
+  name:'AppLink',
   props: {
     to: {
       type: String,
       required: true
     }
   },
-  linkProps(url) {
+  methods:{
+    linkProps(url) {
       return {
         is: 'router-link',
         to: url
+      }
     }
   }
 }

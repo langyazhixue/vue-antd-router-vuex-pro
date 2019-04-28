@@ -1,23 +1,17 @@
-<template>
-  <div>
-    <a-menu-item key="1">
-      <a-icon type="pie-chart" />
-      <span>Option 1</span>
-    </a-menu-item>
-    <a-menu-item key="2">
-      <a-icon type="desktop" />
-      <span>Option 2</span>
-    </a-menu-item>
-  </div>
-</template>
+
 <script>
 import path from 'path'
 import AppLink from './link'
 import AppItem from './item'
+// import Vue from 'vue'
+// Vue.component('app-item',AppItem)
+import { Menu } from 'ant-design-vue'
+console.log(Menu)
 export default {
   name:'SideBarItem',
+  functional:true,
   props:{
-    routeItem:{
+    route:{
       reuqired:true,
       type:Object
     },
@@ -35,29 +29,72 @@ export default {
     AppLink,
     AppItem
   },
-  methods:{
-    hasOneShowingChild(children, parent){
+  render(h, { props }){
+    let onlyOneChild = null
+    function hasOneShowingChild(children, parent){
       const showingChildren = children.filter(item => {
         if (item.hidden) {
           return false
         } else {
-          this.onlyOneChild = item
+          onlyOneChild = item
           return true
         }
       })
-      debugger
       if(showingChildren.length === 1) {
         return true
       } 
       if(showingChildren.length === 0) {
-         this.onlyOneChild = { ... parent, path: '' }
+        onlyOneChild = { ... parent, path: '' }
         return true
       }
       return false
-    },
-    resolvePath(routerPath){
-      return path.resolve(this.basePath,routerPath)
     }
+    if(hasOneShowingChild(props.route.children, props.route)) {
+      return h(
+        'a-menu-item',
+        {
+          props: {
+            key: onlyOneChild.key,
+            title:onlyOneChild.meta.title,
+          }
+        },
+        [
+          h(
+            AppItem,
+            {
+              props:{
+                title:onlyOneChild.meta.title,
+                icon:onlyOneChild.meta.icon
+              }
+            }
+          )
+        ]
+      )
+    }
+  },
+  methods:{
+    // hasOneShowingChild(children, parent){
+    //   const showingChildren = children.filter(item => {
+    //     if (item.hidden) {
+    //       return false
+    //     } else {
+    //       this.onlyOneChild = item
+    //       return true
+    //     }
+    //   })
+    //   debugger
+    //   if(showingChildren.length === 1) {
+    //     return true
+    //   } 
+    //   if(showingChildren.length === 0) {
+    //      this.onlyOneChild = { ... parent, path: '' }
+    //     return true
+    //   }
+    //   return false
+    // },
+    // resolvePath(routerPath){
+    //   return path.resolve(this.basePath,routerPath)
+    // }
   }
 }
 </script>
