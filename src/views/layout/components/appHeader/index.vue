@@ -7,13 +7,14 @@
         <app-logo-view/>
       </div>
       <div class='app--layout--header--right'>
-
+        <app-nav/>
       </div>
   </a-layout-header>
 </template>
 <script>
 import { mapMutations } from 'vuex'
 import AppLogoView from './components/logo'
+import AppNav from './components/nav/index'
 export default {
   name: 'AppHeader',
   data(){
@@ -24,7 +25,8 @@ export default {
     }
   },
   components:{
-    AppLogoView
+    AppLogoView,
+    AppNav
   },
   computed:{
     isCollapsed(){

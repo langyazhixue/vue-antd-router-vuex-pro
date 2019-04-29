@@ -3,6 +3,7 @@ import Vue from 'vue'
 import AppLayout from '@/views/layout/index'
 import { pathParameterToJson } from '@/utils/url'
 import componentsRouter from './modules/components'
+import nestedRouter  from './modules/nested'
 Vue.use(VueRouter)
 
 /**
@@ -17,13 +18,11 @@ export const constantRouterMap = [
     path: '/login',
     component:() => import('@/views/login/index'),
     name:'Login',
-    key:'Login',
     hidden: true
   },
   {
     path:'/',
     redirect:'/dashboard',
-    key:'Redirect',
     hidden: true
   },
   {
@@ -34,7 +33,6 @@ export const constantRouterMap = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'DashBoard',
-        key:'DashBoard',
         meta: { title: '首页', icon: 'iconshiyongwendang'}
       }
     ],
@@ -48,7 +46,6 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/dashboard/index'),
         name: 'Documentation',
-        key:'Documentation',
         meta: { title: '文档', icon: 'iconshiyongwendang'}
       }
     ],
@@ -61,7 +58,6 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/guide/index'),
         name: 'Guide',
-        key:'Guide',
         meta: { title: '引导页', icon: 'iconshiyongwendang'}
       }
     ],
@@ -74,17 +70,16 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/svgIcons/index'),
         name: 'Icons',
-        key:'Icons',
         meta: { title: 'Icons', icon: 'iconshiyongwendang'}
       }
     ]
   },
   componentsRouter,
+  nestedRouter,
   {
     path: '*',
     component: () => import('@/views/404/index'),
     name: 'errPage',
-    key:'errPage',
     hidden:true
   }
 ]

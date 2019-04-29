@@ -12,7 +12,11 @@ import api from '@/api/index'
 
 // globalComponent 
 import SvgIcon from '@/components/svgIcon'// svg组件
+import IconFont from '@/utils/iconfont.js'
+import BreadCrumb from '@/components/breadCrumb'
 Vue.component(SvgIcon.name, SvgIcon)
+Vue.component('icon-font',IconFont)
+Vue.component(BreadCrumb.name,BreadCrumb)
 
 Vue.use(Antd)
 Vue.use(http)

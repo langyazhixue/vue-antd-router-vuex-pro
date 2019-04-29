@@ -13,6 +13,13 @@
       height: ~"calc(100vh - @{header-height})";
       background-color: @side-bg;
       overflow: scroll;
+      .ant-menu-inline-collapsed {
+        .app-menu-text{
+          max-width: 0;
+          display: inline-block;
+          opacity: 0;
+        }
+      }
       .ant-menu-dark{
         background: @side-bg;
         color:@white;

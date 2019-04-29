@@ -18,10 +18,10 @@ export default {
     let vnodes = []
     // jsx 语法
     if (icon) {
-      vnodes.push(<svg-icon icon-class={icon}/>)
+       vnodes.push(<icon-font type={icon} />)
     }
     if (title) {
-      vnodes.push(<span slot='title'>{(title)}</span>)
+      vnodes.push(<span class='app-menu-text'>{(title)}</span>)
     }
     return h('span',vnodes)
   }

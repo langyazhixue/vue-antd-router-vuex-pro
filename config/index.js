@@ -44,7 +44,7 @@ module.exports = {
      * Source Maps
      */
      // https://webpack.js.org/configuration/devtool/#development
-     devtool: 'cheap-source-map',
+     devtool: 'eval-source-map',
      cssSourceMap: false
   },
   build: {

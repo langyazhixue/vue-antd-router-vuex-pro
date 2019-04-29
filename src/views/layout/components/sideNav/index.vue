@@ -1,13 +1,14 @@
 <template>
   <a-layout-sider
     theme='light'
+    v-model="isCollapsed"
   >
+  <span v-show='false'>{{defaultOpenKeys}}{{isCollapsed}}</span>
     <a-menu 
       theme='dark'
       mode="inline"
       :defaultSelectedKeys='defaultSelectedKeys'
       :defaultOpenKeys='defaultOpenKeys'
-      :inlineCollapsed="isCollapsed"
      >
     <template
       v-for='(route) in routerMap'
@@ -64,12 +65,19 @@ export default {
   components:{
     SideBarItem
   },
+  data(){
+    return {
+      openKeys : [],
+      collapsed:false,
+    } 
+  },
   components:{
     AppItem
   },
   computed:{
     isCollapsed(){
-      return this.$store.state.app.isCollapsed
+      let collapsed = this.$store.state.app.isCollapsed
+      return collapsed
     },
     routerMap(){
       let router = this.$store.state.app.routerMap
@@ -77,12 +85,30 @@ export default {
       return routerArrPure
     },
     defaultSelectedKeys(){
-      let arr = []
-      arr.push(this.$route.path)
-      return arr
+      return [this.$route.path]
     },
-    defaultOpenKeys(){
-      return []
+    defaultOpenKeys() {
+      // 计算初始情况是否需要展开二级菜单
+      let res = []
+      let fullPath = this.$route.fullPath
+      let matched = this.$route.matched
+      let matchedRouter = matched.filter(item => {
+        return fullPath === item.path
+      })
+      if(matchedRouter.length > 0) {
+        if(matchedRouter[0].parent) {
+          res.push(matchedRouter[0].parent.path)
+        }
+      }
+      return res
+    }
+  },
+  watch: {
+    openKeys: {
+      handler: function(newVal,oldVal){
+        console.log(newVal)
+      },  
+      deep: true
     }
   },
   methods:{
@@ -103,6 +129,9 @@ export default {
     },
     resolvePath(basePath,routerPath){
       return path.resolve(basePath,routerPath)
+    },
+    toggleCollapsed(){
+      this.collapsed = !this.collapsed
     }
   }
 }
