@@ -6,7 +6,7 @@ import Antd from 'ant-design-vue'
 import directive from '@/directive/index'
 import 'normalize.css'
 import '@/styles/index.less'
-import '@/assets/fonts/iconfont.js'
+import './permission'
 import http from '@/utils/http'
 import api from '@/api/index'
 
