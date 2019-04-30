@@ -7,7 +7,7 @@
         <app-logo-view/>
       </div>
       <div class='app--layout--header--right'>
-        <app-nav/>
+       <app-nav/>
       </div>
   </a-layout-header>
 </template>
@@ -46,5 +46,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-
+  .app--layout--header--left{
+  }
 </style>

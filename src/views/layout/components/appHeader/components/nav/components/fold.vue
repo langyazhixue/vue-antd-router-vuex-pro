@@ -28,9 +28,11 @@ export default {
 <style lang="less" scoped>
 .app--fold--container{
   height: 100%;
-  line-height: 58px;
   padding-left:14px;
   padding-right:14px;
+  display:inline-block;
+  position: relative;
+  top:2px;
   .anticon{
     font-size:20px;
     cursor: pointer;

@@ -1,13 +1,19 @@
 <template>
   <a-breadcrumb class='app--breadcrumb--container' separator="/">
-    <a-breadcrumb-item
-      v-for='(item,$index)in matched'
-      :key='$index'
+    <template
+      v-for='(item, $index) in matched'
     >
-      <span>{{item.meta.title}}</span>
-    </a-breadcrumb-item>
+      <a-breadcrumb-item
+      >
+        <router-link v-if='$index === 0' :to='{
+          path:item.path
+        }'>
+            {{item.meta.title}}
+        </router-link>
+        <span v-else>{{item.meta.title}}</span>
+      </a-breadcrumb-item>
+    </template>
   </a-breadcrumb>
-
 </template>
 <script>
 export default {
@@ -41,6 +47,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .app--breadcrumb--container {
-
+  display: inline-block;
 }
 </style>

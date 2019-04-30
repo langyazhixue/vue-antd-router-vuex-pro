@@ -26,5 +26,10 @@ export default {
   line-height: @header-nav-height;
   border-bottom:1px solid  @border;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  .app--header--nav--left {
+    
+  }
 }
 </style>
