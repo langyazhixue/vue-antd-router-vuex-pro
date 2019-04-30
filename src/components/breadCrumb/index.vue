@@ -5,7 +5,7 @@
     >
       <a-breadcrumb-item
       >
-        <router-link v-if='$index === 0' :to='{
+        <router-link class='redirect'  v-if='$index === 0' :to='{
           path:item.path
         }'>
             {{item.meta.title}}
@@ -45,8 +45,22 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
-.app--breadcrumb--container {
+<style lang="less" >
+@import '~@/styles/variables.less';
+.app--breadcrumb--container.ant-breadcrumb {
   display: inline-block;
+  span {
+    color:@assistant-text-color !important;
+  }
+  span:last-child {
+    color:@assistant-text-color !important;
+  }
+  .redirect {
+    color:@primary-text-color;
+    &:hover{
+      color:@primary-color;
+    }
+  }
+
 }
 </style>

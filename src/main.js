@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import Antd from 'ant-design-vue'
 import directive from '@/directive/index'
 import 'normalize.css'
