@@ -3,4 +3,3 @@ config/*.js
 src/assets
 index.html
 /static/*
-src/

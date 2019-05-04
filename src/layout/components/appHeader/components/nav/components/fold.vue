@@ -1,24 +1,24 @@
 <template>
-  <div class='app--fold--container' @click='handlerCollapse'>
-    <a-icon :type="isCollapsed ? 'menu-unfold' : 'menu-fold'" /> 
+  <div class="app--fold--container" @click="handlerCollapse">
+    <a-icon :type="isCollapsed ? 'menu-unfold' : 'menu-fold'" />
   </div>
 </template>
 <script>
 import { mapMutations } from 'vuex'
 export default {
-  name:'AppFold',
+  name: 'AppFold',
   computed: {
-    isCollapsed(){
+    isCollapsed() {
       return this.$store.state.app.isCollapsed
     }
   },
-  methods:{
+  methods: {
     ...mapMutations({
-      '_setIsCollapsed':'app/set-isCollapsed'
+      '_setIsCollapsed': 'app/set-isCollapsed'
     }),
-    handlerCollapse(){
+    handlerCollapse() {
       this._setIsCollapsed({
-        isCollapsed:!this.isCollapsed
+        isCollapsed: !this.isCollapsed
       })
     }
   }

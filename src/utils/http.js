@@ -11,13 +11,13 @@ import axios from 'axios'
 // import local from '@/utils/local'
 
 const axiosInstance = axios.create()
-/* 
+/*
   设置超时15秒
 */
 axiosInstance.defaults.timeout = 15 * 1000
 axiosInstance.defaults.headers['Content-Type'] = 'application/json; charset=utf-8'
 
-/* 
+/*
   error弹窗
 */
 const showErrorMessage = function(msg) {
@@ -25,7 +25,7 @@ const showErrorMessage = function(msg) {
   // Message.error({ content: msg })
 }
 
-/* 
+/*
   request
 */
 axiosInstance.interceptors.request.use(
@@ -37,7 +37,7 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-/* 
+/*
   response
 */
 axiosInstance.interceptors.response.use(
@@ -69,10 +69,9 @@ const httpInstance = {
           const statusCode = err.response.status
           if (statusCode === 401) {
             showErrorMessage('请重新登陆')
-            logout()
           } else {
             let errorResponse = ''
-            if(statusCode === 404) {
+            if (statusCode === 404) {
               errorResponse = 'Not Found'
             } else if (statusCode === 500) {
               errorResponse = err.response.data.message || '网络异常'
@@ -101,20 +100,6 @@ const httpInstance = {
     return this.handleResponse(axiosInstance.delete(url, options), options)
   }
 }
-
-
-// get(url, options) {
-//   return this.handleResponse(axiosInstance.get(url, options), options)
-// },
-// post(url, data, options) {
-//   return this.handleResponse(axiosInstance.post(url, data, options), options)
-// },
-// put(url, data, options) {
-//   return this.handleResponse(axiosInstance.put(url, data, options), options)
-// },
-// delete(url, options) {
-//   return this.handleResponse(axiosInstance.delete(url, options), options)
-// }
 
 export const http = httpInstance
 export default {

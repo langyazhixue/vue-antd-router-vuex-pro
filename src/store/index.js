@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import app from './modules/app'
 Vue.use(Vuex)
 const store = new Vuex.Store({
-  modules:{
+  modules: {
     app
   }
 })

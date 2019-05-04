@@ -1,10 +1,10 @@
 <template>
-  <div class='parent'>
+  <div class="parent">
     <header>父组件</header>
-    <test-child :items='items' :todos='todos'>
+    <test-child :items="items" :todos="todos">
       <template slot-scope="slotProps">
-      <span>{{slotProps.todo.text}}</span>
-    </template>
+        <span>{{ slotProps.todo.text }}</span>
+      </template>
     </test-child>
     <div>
       <router-link
@@ -24,8 +24,11 @@
 <script>
 import TestChild from './components/child'
 export default {
-  name:'AdminLogin',
-  data(){
+  name: 'AdminLogin',
+  components: {
+    TestChild
+  },
+  data() {
     return {
       items: [
         { text: '文字1', cname: 'tom', addr: 'usa' },
@@ -38,13 +41,10 @@ export default {
       ]
     }
   },
-  components:{
-    TestChild
-  },
   // created(){
   //   console.log(this.$options)
   // },
-  mounted(){
+  mounted() {
     console.log(this)
   }
 }

@@ -1,15 +1,17 @@
 <template>
-  <div class='login--container'>
+  <div class="login--container">
     <a-form
-    :form="form"
-    @submit="handleSubmit"
-  >
-    <h2 class='login--container--title'>系统登陆</h2>
+      :form="form"
+      @submit="handleSubmit"
+    >
+      <h2 class="login--container--title">
+        系统登陆
+      </h2>
       <!-- 用户名 -->
-      <a-form-item  
-        label="用户名"  
-        :label-col="formItemLayout.labelCol" 
-        :wrapper-col="formItemLayout.wrapperCol" 
+      <a-form-item
+        label="用户名"
+        :label-col="formItemLayout.labelCol"
+        :wrapper-col="formItemLayout.wrapperCol"
       >
         <a-input
           v-decorator="[
@@ -24,17 +26,17 @@
       <!-- 密码 -->
       <a-form-item
         label="用户名"
-        :label-col="formItemLayout.labelCol" 
+        :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
       >
         <a-input
-          type='password'
           v-decorator="[
             'password',
             { rules: [{ required: true, message: '请输入密码' }],
               initialValue:initialFormData.password
             }
           ]"
+          type="password"
         />
       </a-form-item>
 
@@ -56,33 +58,33 @@
 
 const formItemLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20 },
+  wrapperCol: { span: 20 }
 }
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20, offset: 4 },
+  wrapperCol: { span: 20, offset: 4 }
 }
 export default {
-  name:'LoginView',
-  data(){
+  name: 'LoginView',
+  data() {
     return {
       form: this.$form.createForm(this),
       formItemLayout,
       formTailLayout,
-      initialFormData:{
-        name:'admin',
-        password:'123456'
+      initialFormData: {
+        name: 'admin',
+        password: '123456'
       }
     }
   },
-  methods:{
-    handleSubmit (e) {
-      e.preventDefault();
+  methods: {
+    handleSubmit(e) {
+      e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values);
+          console.log('Received values of form: ', values)
         }
-        this.$http.post(this.$api.login,values)
+        this.$http.post(this.$api.login, values)
           .then(res => {
 
           })
@@ -141,5 +143,4 @@ export default {
   }
 }
 </style>
-
 

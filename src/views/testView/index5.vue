@@ -1,21 +1,21 @@
 <template>
   <div>
-    <child-one></child-one>
+    <child-one />
   </div>
 </template>
 <script>
 import ChildOne from './components/childone'
 export default {
-  name:'parent',
+  name: 'Parent',
   provide: {
-    for:'demo'
+    for: 'demo'
+  },
+  components: {
+    ChildOne
   },
   mounted() {
     console.log(typeof navigator === 'undefined')
     console.log(typeof a === 'undefined')
-  },
-  components:{
-    ChildOne
   }
 }
 </script>

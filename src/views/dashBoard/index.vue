@@ -1,10 +1,11 @@
 <template>
   <div>
-      首页
+    sdfdsf
+    <a-pagination :default-current="1" :total="50" show-size-changer />
   </div>
 </template>
 <script>
 export default {
-  name:'dashBoardView'
+  name: 'DashBoardView'
 }
 </script>

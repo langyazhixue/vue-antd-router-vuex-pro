@@ -1,11 +1,11 @@
 <template>
-    <a-layout class='app--layout--container'>
-        <app-header/>
-      <a-layout>
-        <app-side-nav/>
-        <app-main/>
-      </a-layout>
+  <a-layout class="app--layout--container">
+    <app-side-nav />
+    <a-layout>
+      <app-header />
+      <app-main />
     </a-layout>
+  </a-layout>
 </template>
 <script>
 import AppMain from './components/appMain/index'
@@ -20,5 +20,4 @@ export default {
   }
 }
 </script>
-
 

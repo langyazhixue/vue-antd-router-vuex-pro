@@ -6,24 +6,24 @@
         v-for="(todo,$index) in todos"
         :key="$index"
       >
-        <slot :todo='todo'>
-          {{todo.text}}
+        <slot :todo="todo">
+          {{ todo.text }}
         </slot>
       </li>
     </ul>
   </div>
-</template> 
+</template>
 <script>
 export default {
-  name:'TestChild',
-  props:{
-    items:{
-      required:true,
-      type:Array
+  name: 'TestChild',
+  props: {
+    items: {
+      required: true,
+      type: Array
     },
-    todos:{
-      required:true,
-      type:Array
+    todos: {
+      required: true,
+      type: Array
     }
   }
 }

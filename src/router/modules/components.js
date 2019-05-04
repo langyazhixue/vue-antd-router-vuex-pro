@@ -1,4 +1,4 @@
-import AppLayout from '@/views/layout/index'
+import AppLayout from '@/layout/index'
 const componentsRouter = {
   path: '/components',
   component: AppLayout,
@@ -7,13 +7,12 @@ const componentsRouter = {
     title: 'components',
     icon: 'iconshiyongwendang'
   },
-  key:'ComponentDemo',
   children: [
     {
       path: 'upload',
       component: () => import('@/views/components-demo/upload'),
       name: 'Upload',
-      meta: { title: '文件上传' }
+      meta: { title: 'upload' }
     },
     {
       path: 'sticky',

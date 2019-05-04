@@ -1,13 +1,13 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-import AppLayout from '@/views/layout/index'
+import AppLayout from '@/layout/index'
 import { pathParameterToJson } from '@/utils/url'
 import componentsRouter from './modules/components'
-import nestedRouter  from './modules/nested'
+// import nestedRouter from './modules/nested'
 Vue.use(VueRouter)
 
 /**
- * hidden: true      if `hidden:true` will not show in the sidebar(default is false) 
+ * hidden: true      if `hidden:true` will not show in the sidebar(default is false)
  * meta :{
  *  title: 'title'               the name show in submenu and breadcrumb (recommend set)
     icon: 'svg-name'             the icon show in the sidebar
@@ -16,51 +16,51 @@ Vue.use(VueRouter)
 export const constantRouterMap = [
   {
     path: '/login',
-    component:() => import('@/views/login/index'),
-    name:'Login',
+    component: () => import('@/views/login/index'),
+    name: 'Login',
     hidden: true
   },
   {
-    path:'/',
-    redirect:'/dashboard',
+    path: '/',
+    redirect: '/dashboard',
     hidden: true
   },
   {
-    path:'',
-    component:AppLayout ,
+    path: '',
+    component: AppLayout,
     children: [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'DashBoard',
-        meta: { title: '首页', icon: 'iconshiyongwendang'}
+        meta: { title: 'dashboard', icon: 'iconshiyongwendang' }
       }
-    ],
+    ]
   },
   {
-    path:'/documentation',
+    path: '/documentation',
     component: AppLayout,
 
     children: [
       {
         path: 'index',
-        component: () => import('@/views/dashboard/index'),
+        component: () => import('@/views/documentation/index'),
         name: 'Documentation',
-        meta: { title: '文档', icon: 'iconshiyongwendang'}
+        meta: { title: 'documentation', icon: 'iconshiyongwendang' }
       }
-    ],
+    ]
   },
   {
-    path:'/guide',
+    path: '/guide',
     component: AppLayout,
     children: [
       {
         path: 'index',
         component: () => import('@/views/guide/index'),
         name: 'Guide',
-        meta: { title: '引导页', icon: 'iconshiyongwendang'}
+        meta: { title: 'guide', icon: 'iconshiyongwendang' }
       }
-    ],
+    ]
   },
   {
     path: '/icon',
@@ -70,22 +70,22 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/svgIcons/index'),
         name: 'Icons',
-        meta: { title: 'Icons', icon: 'iconshiyongwendang'}
+        meta: { title: 'icons', icon: 'iconshiyongwendang' }
       }
     ]
   },
   componentsRouter,
-  nestedRouter,
+  // nestedRouter,
   {
     path: '*',
     component: () => import('@/views/404/index'),
     name: 'errPage',
-    hidden:true
+    hidden: true
   }
 ]
 
 const router = new VueRouter({
-  mode: "hash",
+  mode: 'hash',
   routes: constantRouterMap,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -102,9 +102,9 @@ const router = new VueRouter({
       return position
     }
   },
-  parseQuery(query){
+  parseQuery(query) {
     let res = {}
-    if(query) {
+    if (query) {
       res = pathParameterToJson(query)
     }
     return res

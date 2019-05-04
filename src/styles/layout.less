@@ -1,42 +1,56 @@
 
 .app--layout--container{
-  > .ant-layout-header{
-    height: @header-height;
-    background-color: @header-bg;
-    z-index: 10;
-    padding:0;
-    .shadow;
+  .ant-layout-sider.has--logo {
+    .ant-layout-sider-children {
+      > .ant-menu-dark {
+        min-height: ~"calc(100vh - @{header-nav-height})";
+        height: ~"calc(100vh - @{header-nav-height})";
+      }
+    }
   }
-  > .ant-layout-has-sider {
-    .ant-layout-sider{
-      min-height: ~"calc(100vh - @{header-height})";
-      height: ~"calc(100vh - @{header-height})";
-      background-color: @side-bg;
-      overflow: scroll;
-      .ant-menu-inline-collapsed {
-        .app-menu-text{
-          max-width: 0;
-          display: inline-block;
-          opacity: 0;
-        }
+  .ant-layout-sider{
+    min-height:100vh;
+    height:100vh;
+    background-color: @side-bg;
+    overflow: scroll;
+    .ant-layout-sider-children {
+      > .ant-menu-dark {
+        min-height:100vh;
+        height:100vh;
       }
-      .ant-menu-dark{
-        background: @side-bg;
+    }
+    .ant-menu-inline-collapsed {
+      .app-menu-text{
+        max-width: 0;
+        display: inline-block;
+        opacity: 0;
+      }
+    }
+    .ant-menu-dark{
+      background: @side-bg;
+      color:@white;
+      .ant-menu-item{
         color:@white;
-        .ant-menu-item{
-          color:@white;
-        }
-        .ant-menu-item-active{
-          color:@primary-color;
-        }
-        .ant-menu-item-selected{
-          color:@white !important;
-        }
-        .ant-menu-inline.ant-menu-sub {
-          background: @side-sub-bg;
-          box-shadow:none;
-        }
       }
+      .ant-menu-item-active{
+        color:@primary-color;
+      }
+      .ant-menu-item-selected{
+        color:@white !important;
+      }
+      .ant-menu-inline.ant-menu-sub {
+        background: @side-sub-bg;
+        box-shadow:none;
+      }
+    }
+  }
+  > .ant-layout {
+    .ant-layout-header{
+      height: @header-height;
+      background-color: @header-bg;
+      z-index: 10;
+      padding:0;
+      .shadow;
     }
     .ant-layout-content{
       background-color: @content-bg;

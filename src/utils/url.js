@@ -1,6 +1,7 @@
 
 // 使用node工具库
-const { URL, URLSearchParams } = require('url')
+const { URL } = require('url')
+
 export const pathParameterToJson = function(path) {
   const result = {}
   const paramList = path.split('&')

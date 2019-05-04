@@ -55,11 +55,11 @@ export default {
       const requireAssets = require.context('../vueAplayer/assets', false, /\.svg$/)
       // console.log(11)
       // console.log(requireAssets.keys())
-      let res = {}
+      const res = {}
       requireAssets.keys().map(path => {
         const inlineSvg = requireAssets(path)
         console.log(inlineSvg)
-        const [raw, viewBox, d] = inlineSvg.match(/^<svg.+?viewBox="(.+?)".*><path.+?d="(.+?)".*><\/path><\/svg>$/)
+        const [viewBox, d] = inlineSvg.match(/^<svg.+?viewBox="(.+?)".*><path.+?d="(.+?)".*><\/path><\/svg>$/)
         console.log(inlineSvg.match(/^<svg.+?viewBox="(.+?)".*><path.+?d="(.+?)".*><\/path><\/svg>$/))
         res[path.match(/^.*\/(.+?)\.svg$/)[1]] = {
           viewBox,

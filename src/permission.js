@@ -1,11 +1,11 @@
 import router from '@/router/index'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-NProgress.configure({ 
+NProgress.configure({
   minimum: 0.05,
-  easing: 'ease', 
+  easing: 'ease',
   speed: 600,
-  showSpinner:false 
+  showSpinner: false
 })
 router.beforeEach((to, from, next) => {
   NProgress.start()

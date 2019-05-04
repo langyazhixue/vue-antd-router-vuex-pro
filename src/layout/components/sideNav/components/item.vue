@@ -1,10 +1,10 @@
 
 <script>
 export default {
-  name:'AppItem',
+  name: 'AppItem',
   functional: true, // 函数式组件
-  props:{
-    icon:{
+  props: {
+    icon: {
       type: String,
       default: ''
     },
@@ -13,17 +13,17 @@ export default {
       default: ''
     }
   },
-  render(h, context){
+  render(h, context) {
     const { icon, title } = context.props
-    let vnodes = []
+    const vnodes = []
     // jsx 语法
     if (icon) {
-       vnodes.push(<icon-font type={icon} />)
+      vnodes.push(<icon-font type={icon} />)
     }
     if (title) {
       vnodes.push(<span class='app-menu-text'>{(title)}</span>)
     }
-    return h('span',vnodes)
+    return h('span', vnodes)
   }
 }
 </script>
