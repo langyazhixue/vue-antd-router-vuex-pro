@@ -75,7 +75,18 @@ export const constantRouterMap = [
     ]
   },
   componentsRouter,
-  nestedRouter,
+  {
+    path: '/test',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/testView/index'),
+        name: 'testView',
+        meta: { title: 'testView', icon: 'iconshiyongwendang'}
+      }
+    ]
+  },
   {
     path: '*',
     component: () => import('@/views/404/index'),

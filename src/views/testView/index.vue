@@ -1,93 +1,104 @@
 <template>
   <div class="main--class">
-    <div>
-      {{ message }}
-    </div>
-    <div class="cc">
-      <el-button type="primary" @click="change">
-        更新父组件message
-      </el-button>
-    </div>
-    <div v-focus="testDirective">
-      <directive-child />
-    </div>
-    <div>
-      <router-link :to="{path:'test'}">
-        <el-button>去test2</el-button>
-      </router-link>
-    </div>
-    <div>
-      testProps:{{ testProps }}
-    </div>
+      <ul
+        v-for = '(modelItem, $index) in data'
+        :key='$index'
+      >
+        <tree-menu :model='modelItem'/>
+      </ul>
   </div>
 </template>
 <script>
-import directiveChild from './components/directiveChild.vue'
+import TreeMenu from './treeMenu.vue'
+var demoData = [
+  {
+    'id': '1',
+    'menuName': '基础管理',
+    'menuCode': '10',
+    'children': [
+      {
+        'menuName': '用户管理',
+        'menuCode': '11'
+      },
+      {
+        'menuName': '角色管理',
+        'menuCode': '12',
+        'children': [
+          {
+            'menuName': '管理员',
+            'menuCode': '121',
+            'children':[
+              {
+                'menuName': '角色管理11',
+                'menuCode': '124',
+              },
+              {
+                'menuName': '角色管理22',
+                'menuCode': '125',
+              }
+            ]
+          },
+          {
+            'menuName': 'CEO',
+            'menuCode': '122'
+          },
+          {
+            'menuName': 'CFO',
+            'menuCode': '123'
+          },
+          {
+            'menuName': 'COO',
+            'menuCode': '124'
+          },
+          {
+            'menuName': '普通人',
+            'menuCode': '124'
+          }
+        ]
+      },
+      {
+        'menuName': '权限管理',
+        'menuCode': '13'
+      }
+    ]
+  },
+  {
+    'id': '2',
+    'menuName': '商品管理',
+    'menuCode': ''
+  },
+  {
+    'id': '3',
+    'menuName': '订单管理',
+    'menuCode': '30',
+    'children': [
+      {
+        'menuName': '订单列表',
+        'menuCode': '31'
+      },
+      {
+        'menuName': '退货列表',
+        'menuCode': '32',
+        'children': []
+      }
+    ]
+  },
+  {
+    'id': '4',
+    'menuName': '商家管理',
+    'menuCode': '',
+    'children': []
+  }
+];
 export default {
-  name: 'DirectiveParent',
-  components: {
-    directiveChild
-  },
-  props: {
-    testProps: {
-      default: 0,
-      type: Number
-    }
-  },
+  name: 'demo',
   data() {
     return {
-      message: '这是父组件',
-      testDirective: 'testDirective'
+      data:demoData
     }
   },
-  created() {
-    console.log('11')
-  },
-  mounted() {
-    this.add()
-  },
-  methods: {
-    change() {
-      // this.$myMethod('test')
-      this.message = '父组件已更新'
-    },
-    add() {
-      const requireAssets = require.context('../vueAplayer/assets', false, /\.svg$/)
-      // console.log(11)
-      // console.log(requireAssets.keys())
-      let res = {}
-      requireAssets.keys().map(path => {
-        const inlineSvg = requireAssets(path)
-        console.log(inlineSvg)
-        const [raw, viewBox, d] = inlineSvg.match(/^<svg.+?viewBox="(.+?)".*><path.+?d="(.+?)".*><\/path><\/svg>$/)
-        console.log(inlineSvg.match(/^<svg.+?viewBox="(.+?)".*><path.+?d="(.+?)".*><\/path><\/svg>$/))
-        res[path.match(/^.*\/(.+?)\.svg$/)[1]] = {
-          viewBox,
-          d
-        }
-      })
-      // const SVGs = requireAssets.keys().reduce((svgs, path) => {
-      //   const inlineSvg = requireAssets(path)
-      //   const [raw, viewBox, d] = inlineSvg.match(/^<svg.+?viewBox="(.+?)".*><path.+?d="(.+?)".*><\/path><\/svg>$/)
-
-      //   svgs[path.match(/^.*\/(.+?)\.svg$/)[1]] = {
-      //     viewBox,
-      //     d
-      //   }
-      //   return svgs
-      // }, {})
-      // console.log(SVGs)
-    }
+  components:{
+    TreeMenu
   }
-
 }
 </script>
-<style lang="scss" scoped>
-.main--class  {
-  .cc /deep/ .el-button--primary{
-    color:red !important;
-  }
-}
-
-</style>
-
