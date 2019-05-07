@@ -1,104 +1,61 @@
 <template>
-  <div class="main--class">
-      <ul
-        v-for = '(modelItem, $index) in data'
-        :key='$index'
-      >
-        <tree-menu :model='modelItem'/>
-      </ul>
+  <div>
+    <span>{{name}}</span>
+    <a-button @click='change'>改变</a-button>
   </div>
 </template>
 <script>
-import TreeMenu from './treeMenu.vue'
-var demoData = [
-  {
-    'id': '1',
-    'menuName': '基础管理',
-    'menuCode': '10',
-    'children': [
-      {
-        'menuName': '用户管理',
-        'menuCode': '11'
-      },
-      {
-        'menuName': '角色管理',
-        'menuCode': '12',
-        'children': [
-          {
-            'menuName': '管理员',
-            'menuCode': '121',
-            'children':[
-              {
-                'menuName': '角色管理11',
-                'menuCode': '124',
-              },
-              {
-                'menuName': '角色管理22',
-                'menuCode': '125',
-              }
-            ]
-          },
-          {
-            'menuName': 'CEO',
-            'menuCode': '122'
-          },
-          {
-            'menuName': 'CFO',
-            'menuCode': '123'
-          },
-          {
-            'menuName': 'COO',
-            'menuCode': '124'
-          },
-          {
-            'menuName': '普通人',
-            'menuCode': '124'
-          }
-        ]
-      },
-      {
-        'menuName': '权限管理',
-        'menuCode': '13'
-      }
-    ]
+const extend = {
+  created() {
+    console.log('extends created')
   },
-  {
-    'id': '2',
-    'menuName': '商品管理',
-    'menuCode': ''
-  },
-  {
-    'id': '3',
-    'menuName': '订单管理',
-    'menuCode': '30',
-    'children': [
-      {
-        'menuName': '订单列表',
-        'menuCode': '31'
-      },
-      {
-        'menuName': '退货列表',
-        'menuCode': '32',
-        'children': []
-      }
-    ]
-  },
-  {
-    'id': '4',
-    'menuName': '商家管理',
-    'menuCode': '',
-    'children': []
+  watch:{
+    name(newVal,oldVal){
+      console.log('extends')
+    }
   }
-];
+}
+
+const mixin1 = {
+  created() {
+    console.log('mixin1 created')
+  },
+  watch:{
+    name(newVal,oldVal){
+      console.log('mixin1')
+    }
+  }
+}
+
+const mixin2 = {
+  created() {
+    console.log('mixin2 created')
+  },
+  watch:{
+    name(newVal,oldVal){
+      console.log('mixin2')
+    }
+  }
+}
+
 export default {
-  name: 'demo',
-  data() {
+  name: 'testView',
+  extends: extend,
+  mixins: [mixin1,mixin2],
+  data(){
     return {
-      data:demoData
+      name:'前面'
     }
   },
-  components:{
-    TreeMenu
+  watch:{
+    name(newVal,oldVal){
+      console.log('mySelf')
+    }
+  },
+  methods:{
+    change(){
+      this.name = '后面'
+    }
   }
 }
 </script>
