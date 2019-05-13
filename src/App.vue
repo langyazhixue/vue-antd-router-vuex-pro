@@ -5,7 +5,6 @@
     </div>
   </a-locale-provider>
 </template>
-
 <script>
 import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import en_US from 'ant-design-vue/lib/locale-provider/en_US'
@@ -37,6 +36,9 @@ export default {
   },
   created() {
     console.log(this.$options)
+  },
+  mounted() {
+    // document.getElementById('app').appendChild(component.$el)
   }
 }
 </script>
