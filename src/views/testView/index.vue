@@ -17,7 +17,6 @@ const extend = {
     }
   }
 }
-
 const mixin1 = {
   created() {
     console.log('mixin1 created')
