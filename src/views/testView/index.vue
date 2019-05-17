@@ -115,13 +115,10 @@
     <a-button @click="toggle">
       toggle
     </a-button>
-
     <transition name="component-fade" mode="out-in">
       <component :is="view" />
     </transition>
-
     <h2>列表的过渡</h2>
-
     <div id="list-demo" class="demo11">
       <a-button @click="handleradd">
         Add
@@ -295,13 +292,19 @@ export default {
   opacity: 0;
 }
 
-#list-item {
+#list-demo {
+  width: 500px;
+  height: 500px;
+}
+.list-item {
   display: inline-block;
   margin-right: 10px;
 }
 
 .listdddd-enter-active, .listdddd-leave-active {
   transition: all 1s;
+  transform: translateY(0px);
+  opacity:1
 }
 .listdddd-enter, .listdddd-leave-to
 /* .list-leave-active for below version 2.1.8 */ {
