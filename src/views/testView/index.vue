@@ -18,6 +18,7 @@
         hello
       </p>
     </transition>
+
     <h2>css 动画用法同css过渡，区别是在动画中`v-enter`类名在节点插入DOM后不会立即删除，而是`animationend`事件触发时删除</h2>
     <a-button @click="show2=!show2">
       Toggle
@@ -65,8 +66,9 @@
     </a-button>
     <transition
       appear
-
-      appear-active-class="animated heartBeat"
+      appear-class="appear-test-class"
+      appear-to-class="appear-to-test-class"
+      appear-active-class="appear-active-test-class"
     >
       <p v-if="show5">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.
@@ -111,15 +113,18 @@
 
     <h2>多个组件过渡</h2>
     <div>多个组件的过渡简单很多 - 我们不需要使用 key 特性。相反，我们只需要使用动态组件</div>
-
     <a-button @click="toggle">
       toggle
     </a-button>
     <transition name="component-fade" mode="out-in">
       <component :is="view" />
     </transition>
+
     <h2>列表的过渡</h2>
     <div id="list-demo" class="demo11">
+      <a-button @click="shuffle">
+        Shuffle
+      </a-button>
       <a-button @click="handleradd">
         Add
       </a-button>
@@ -132,10 +137,82 @@
         </span>
       </transition-group>
     </div>
+
+    <h2>列表的排序过渡</h2>
+    <div id="flip-list-demo222" class="demo222">
+      <button @click="shuffle">
+        Shuffle
+      </button>
+      <transition-group name="flip-list" tag="ul">
+        <li v-for="item in items" :key="item">
+          {{ item }}
+        </li>
+      </transition-group>
+    </div>
+
+    <h2>列表的交错过渡</h2>
+    <div>通过data属性与JS通信，就可以实现列表的交错过渡</div>
+    <div id="stagered-list-demo">
+      <a-input v-model="query" />
+      <transition-group
+        name="stagered-fade"
+        tag="ul"
+        :css="false"
+        mode="out-in"
+        @before-enter="stageredBeforeEnter"
+        @enter="stageredEnter"
+        @leave="stageredLeave"
+      >
+        <li
+          v-for="(item,index) in computedList"
+          :key="item.msg"
+          :data-index="index"
+        >
+          {{ item.msg }}
+        </li>
+      </transition-group>
+    </div>
+
+    <h2>动态过渡</h2>
+    <div>
+      当你想用Vue的过渡系统来定义的css过渡/动画在不同过渡间切换会非常有用
+    </div>
+    <div id="dynamic-fade-demo" class="demo">
+      Fade In:  <input v-model="fadeInDuration" type="range" min="0" :max="maxFadeDuration">
+      Fade Out: <input v-model="fadeOutDuration" type="range" min="0" :max="maxFadeDuration">
+      <br>
+      <transition
+        :css="false"
+        @before-enter="dynamicBeforeEnter"
+        @enter="dynamicEnter"
+        @leave="dynamicLeave"
+      >
+        <p v-if="dynamicShow">
+          show
+        </p>
+      </transition>
+      <br>
+      <a-button
+        v-if="dynamicStop"
+        @click="dynamicStop = false; dynamicShow = false"
+      >
+        Start animating
+      </a-button>
+      <a-button
+        v-else
+        @click="dynamicStop = true"
+      >
+        Stop it!
+      </a-button>
+    </div>
   </div>
 </template>
 <script>
+import _ from 'lodash'
 import 'animate.css'
+import Velocity from 'velocity-animate'
+import { setTimeout } from 'timers'
+
 export default {
   name: 'TestView',
   components: {
@@ -148,6 +225,19 @@ export default {
   },
   data() {
     return {
+      fadeInDuration: 1000,
+      fadeOutDuration: 1000,
+      maxFadeDuration: 1000,
+      dynamicStop: true,
+      dynamicShow: true,
+      query: '',
+      list: [
+        { msg: 'Bruce Lee' },
+        { msg: 'Jackie Chan' },
+        { msg: 'Chuck Norris' },
+        { msg: 'Jet Li' },
+        { msg: 'Kung Fury' }
+      ],
       show: true,
       show1: true,
       show2: true,
@@ -159,7 +249,21 @@ export default {
       view: 'v-a',
       items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       nextNum: 10
+
     }
+  },
+  computed: {
+    computedList() {
+      if (this.query) {
+        const q = this.query.toLowerCase()
+        return this.list.filter(item => {
+          return item.msg.toLowerCase().indexOf(q) > -1
+        })
+      } else return this.list
+    }
+  },
+  mounted() {
+    this.dynamicShow = false
   },
   methods: {
     randomIndex() {
@@ -188,6 +292,7 @@ export default {
     afterEnter: function(el) {
     // ...
     },
+    // leaveCancelled 只用于 v-show 中
     enterCancelled: function(el) {
       // ...
     },
@@ -206,6 +311,82 @@ export default {
     // leaveCancelled 只用于 v-show 中
     leaveCancelled: function(el) {
       // ...
+    },
+    shuffle: function() {
+      this.items = _.shuffle(this.items)
+    },
+    stageredBeforeEnter(el) {
+      console.log(el)
+      el.style.opacity = 0
+      el.style.height = 0
+    },
+    stageredEnter(el, done) {
+      console.log('enter')
+      // var delay = el.dataset.index * 150
+      setTimeout(function() {
+        Velocity(
+          el,
+          {
+            opacity: 1,
+            height: '1.6em'
+          },
+          {
+            complele: done
+          }
+        )
+      })
+    },
+    stageredLeave(el, done) {
+      console.log('leave')
+      // var delay = el.dataset.index * 150
+      setTimeout(function() {
+        Velocity(
+          el,
+          {
+            opacity: 0,
+            height: 0
+          }, {
+            complete: done
+          }
+        )
+      })
+    },
+    dynamicBeforeEnter(el) {
+      el.style.opacity = 0
+    },
+    dynamicEnter(el, done) {
+      var vm = this
+      Velocity(
+        el,
+        {
+          opacity: 1
+        },
+        {
+          duration: vm.fadeInDuration,
+          complete: function() {
+            done()
+            if (!vm.dynamicStop) {
+              vm.dynamicShow = false
+            }
+          }
+        }
+      )
+    },
+    dynamicLeave(el, done) {
+      var vm = this
+      Velocity(
+        el,
+        {
+          opacity: 0
+        },
+        {
+          duration: vm.fadeOutDuration,
+          complete: function() {
+            done()
+            vm.dynamicShow = true
+          }
+        }
+      )
     }
   }
 }
@@ -253,6 +434,17 @@ export default {
   }
 }
 
+.appear-test-class {
+  opacity: 0;
+  transform: translateX(10px)
+}
+.appear-active-test-class {
+  transition: all 10s ease
+}
+.appear-active-test-class {
+  opacity: 1
+}
+
 .test--container {
   position: relative;
   width: 500px;
@@ -266,15 +458,14 @@ export default {
   }
 }
 .modeTest-enter {
-    opacity: 0;
-    transform: translateX(200px);
+  opacity: 0;
+  transform: translateX(200px);
 }
 
 .modeTest-enter-active{
   opacity: 1;
   transition:all 0.5s ease;
 }
-
 .modeTest-leave-active{
   opacity: 1;
   transition: all 1s ease
@@ -310,6 +501,13 @@ export default {
 /* .list-leave-active for below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(30px);
+}
+
+.listdddd-move{
+  transition: transform 1s;
+}
+.flip-list-move{
+  transition: transform 1s;
 }
 
 // .list-enter{
