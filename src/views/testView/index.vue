@@ -149,7 +149,6 @@
         </li>
       </transition-group>
     </div>
-
     <h2>列表的交错过渡</h2>
     <div>通过data属性与JS通信，就可以实现列表的交错过渡</div>
     <div id="stagered-list-demo">

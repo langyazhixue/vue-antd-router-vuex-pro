@@ -1,7 +1,9 @@
 <template>
-  <a-layout-content>
-    <router-view />
-  </a-layout-content>
+  <transition name="fade-transform" mode="out-in">
+    <a-layout-content :key="key">
+      <router-view />
+    </a-layout-content>
+  </transition>
   <!-- <el-main>
     <transition name="fade-transform" mode="out-in">
       <keep-alive>
@@ -13,6 +15,11 @@
 </template>
 <script>
 export default {
-  name: 'AppMain'
+  name: 'AppMain',
+  computed: {
+    key() {
+      return this.$route.fullPath
+    }
+  }
 }
 </script>

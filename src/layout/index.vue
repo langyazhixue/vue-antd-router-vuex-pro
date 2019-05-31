@@ -4,6 +4,9 @@
     <a-layout>
       <app-header />
       <app-main />
+      <right-panel v-if="showSettings">
+        <div>test</div>
+      </right-panel>
     </a-layout>
   </a-layout>
 </template>
@@ -17,6 +20,11 @@ export default {
     AppMain,
     AppHeader,
     AppSideNav
+  },
+  computed: {
+    showSettings() {
+      return this.$store.state.settings.showSettings
+    }
   }
 }
 </script>

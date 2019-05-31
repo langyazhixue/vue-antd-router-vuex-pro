@@ -17,9 +17,11 @@ import 'moment/locale/zh-cn'
 import SvgIcon from '@/components/svgIcon'// svg组件
 import IconFont from '@/utils/iconfont.js'
 import BreadCrumb from '@/components/breadCrumb'
+import RightPanel from '@/components/rightPanel'
 Vue.component(SvgIcon.name, SvgIcon)
 Vue.component('icon-font', IconFont)
 Vue.component(BreadCrumb.name, BreadCrumb)
+Vue.component(RightPanel.name, RightPanel)
 
 Vue.use(Antd)
 Vue.use(http)
