@@ -5,6 +5,6 @@
 </template>
 <script>
 export default {
-  name:'guide'
+  name: 'Guide'
 }
 </script>

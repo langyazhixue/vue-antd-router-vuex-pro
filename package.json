@@ -79,7 +79,6 @@
     "svg-sprite-loader": "^4.1.3",
     "terser-webpack-plugin": "^1.2.1",
     "url-loader": "^1.1.2",
-    "vue": "^2.5.22",
     "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.22",
@@ -110,7 +109,7 @@
     "urijs": "^1.19.1",
     "velocity": "^0.7.2",
     "velocity-animate": "^1.5.2",
-    "vue": "^2.5.22",
+    "vue": "^2.6.10",
     "vue-i18n": "^8.11.2",
     "vue-router": "^3.0.2",
     "vuex": "^3.0.1"

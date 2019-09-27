@@ -101,6 +101,30 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/tree',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/tree/index'),
+        name: 'tree',
+        meta: { title: '递归组件树1', icon: 'iconshiyongwendang' }
+      }
+    ]
+  },
+  {
+    path: '/render',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/render/index'),
+        name: 'render',
+        meta: { title: 'render渲染函数', icon: 'iconshiyongwendang' }
+      }
+    ]
+  },
+  {
     path: '*',
     component: () => import('@/views/404/index'),
     name: 'errPage',
