@@ -89,6 +89,18 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/form',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/form/index'),
+        name: 'form',
+        meta: { title: 'form', icon: 'iconshiyongwendang' }
+      }
+    ]
+  },
+  {
     path: '*',
     component: () => import('@/views/404/index'),
     name: 'errPage',

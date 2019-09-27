@@ -38,7 +38,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     proxy: config.dev.proxyTable,
     quiet: true,
     watchOptions: {
-      poll:config.dev.poll
+      // 默认为空，不监听的文件或者文件夹，支持正则匹配
+      ignored: /node_modules/,
+      // 监听到变化后会等300ms再去执行，默认300ms
+      aggregateTimeout:300,
+      // 判断文件是否发生变化是通过不停询问系统指定文件有没有变化实现的，默认每秒问1000次
+      poll:config.dev.poll,
+
+
     }
   },
   plugins:[

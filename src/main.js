@@ -22,7 +22,6 @@ Vue.component(SvgIcon.name, SvgIcon)
 Vue.component('icon-font', IconFont)
 Vue.component(BreadCrumb.name, BreadCrumb)
 Vue.component(RightPanel.name, RightPanel)
-
 Vue.use(Antd)
 Vue.use(http)
 Vue.use(api)
@@ -43,3 +42,9 @@ new Vue({
   i18n,
   render: h => h(App)
 })
+
+// var EJS = require('ejs')
+// var my_supplies = { supplies: ['mop', 'broom', 'duster'] }
+// var result = new EJS({ url: 'test.ejs' }).render(my_supplies)
+// console.log(result)
+// document.getElementById('app').innerHTML = result

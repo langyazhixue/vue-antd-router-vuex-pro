@@ -33,7 +33,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json','.scss','.less'],
+    extensions: ['.js','.ejs', '.vue', '.json','.scss','.less'],
     alias: {
       'vue$':'vue/dist/vue.js',
       '@': resolve('src')
@@ -46,7 +46,11 @@ module.exports = {
         test:/\.vue$/,
         loader:'vue-loader',
         options:vueLoaderConfig
-      }, 
+      },
+      { test: /\.ejs$/, 
+        loader: 'ejs-loader'
+      },
+      
       {
         test:/\.js$/,
         loader:'babel-loader',

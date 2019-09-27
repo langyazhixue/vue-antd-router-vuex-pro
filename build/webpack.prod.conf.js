@@ -38,6 +38,7 @@ const webpackConfig = merge(baseWebpackConfig,{
     new webpack.DefinePlugin({
       'process.env':require('../config/prod.env')
     }),
+   // 自动清理构建目录产物
     new CleanWebpackPlugin(['dist']),
     // extract css into its own file
     new MiniCssExtractPlugin({
@@ -51,6 +52,7 @@ const webpackConfig = merge(baseWebpackConfig,{
       favicon:resolve('favicon.ico'),
       title:'vue-element-admin',
       path:config.build.assetsRoot + config.build.assetsSubDirectory,
+
       minify:true // 有默认的配置项
     }),
     new webpack.NamedChunksPlugin(chunk => {
@@ -116,7 +118,11 @@ const webpackConfig = merge(baseWebpackConfig,{
       }),
       // Compress extracted Css, We are useing this plugin so that possible
       // duplicated CSS from different components can be deduped.
-      new OptimizeCSSAssetsPlugin()
+      // cssnano是基于postcss的一款功能强大的插件包，它集成了近30个插件，只需要执行一个命令，就可以对我们的css做多方面不同类型的优化，
+      new OptimizeCSSAssetsPlugin({
+        assetNameRegExp:/.css$/g,
+        cssProcessor:require('cssnano')
+      })
     ]
   }
 })

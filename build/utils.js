@@ -24,7 +24,20 @@
   const postCssLoader = {
     loader:'postcss-loader',  // 添加css前缀
     options:{
-      sourceMap:options.sourceMap
+      sourceMap:options.sourceMap,
+      plugins: () => {
+        require('autoprefixer')({
+          browsers: ['last 2 version', '>1%','ios 7 ']
+        })
+      }
+    }
+  }
+
+  const px2RemLoader = {
+    loader:'px2rem-loader',
+    options:{
+      remUnit:75,  // 1rem = 750px;
+      remPrecision:8 // 小数点后面的位数
     }
   }
 
@@ -44,6 +57,7 @@
     if(options.usePostCSS){
       loaders.push(postCssLoader)
     }
+    // loaders.push(px2RemLoader)
     if(loader) {
       loaders.push({
         loader:loader+'-loader',
