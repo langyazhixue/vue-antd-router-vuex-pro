@@ -34,6 +34,7 @@ Object.keys(directive).forEach((key) => {
 /**
  * message bus
  */
+
 Vue.prototype.$bus = new Vue()
 new Vue({
   el: '#app',

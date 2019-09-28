@@ -6,10 +6,12 @@
   </div>
 </template>
 <script>
+import { test } from '@/utils/test'
 export default {
   name: 'DocumentView',
   methods: {
     onChange(date, dateString) {
+      test()
       console.log(date, dateString)
     }
   }

@@ -4,6 +4,10 @@ import AppLayout from '@/layout/index'
 import { pathParameterToJson } from '@/utils/url'
 import componentsRouter from './modules/components'
 // import nestedRouter from './modules/nested'
+// 应用插件，做了什么？install
+// install 里面做了什么/
+// 1. 挂载 $router
+// 2. 注册组件 <router-view><router-link>
 Vue.use(VueRouter)
 
 /**
