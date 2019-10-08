@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+// import router from './router'
+
+// 用自己写的router
+import router from './KRouter/router'
 import store from './store'
 import i18n from './lang'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
@@ -8,6 +11,7 @@ import Antd from 'ant-design-vue'
 import directive from '@/directive/index'
 import 'normalize.css'
 import '@/styles/index.less'
+import emitter from './mixins/emitter'
 import './permission'
 import http from '@/utils/http'
 import api from '@/api/index'
@@ -31,6 +35,7 @@ Object.keys(directive).forEach((key) => {
   Vue.directive(key, directive[key])
 })
 
+Vue.mixin(emitter)
 /**
  * message bus
  */

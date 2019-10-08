@@ -1,12 +1,16 @@
+// vue-router 源码实现  思路
+// 1. 路由配置解析
+// 2. 路由挂载
+// 3. 路由出口：一个地址对应一个组件
+// 4. 路由监听：当 url改变的时候，组件渲染相应的改变
 let Vue
-class Vuerouter {
+class KRouter {
   // 1. 解析route 配置，生成 map
   constructor(options) {
     this.options = options
     this.routerMap = {
 
     }
-
     // url响应处理,只要 url 变化，用到url 的组件就会重新render
     // vue-router 跟 Vue 强耦合，只能用于vue
     this.app = new Vue({
@@ -23,7 +27,6 @@ class Vuerouter {
     // 2. 路由映射操作
     this.createRouteMap()
     // 组件声明和注册
-
     this.initComponent()
   }
 
@@ -75,17 +78,19 @@ class Vuerouter {
   // hashchange
   bindEvents() {
     window.addEventListener('hashchange', this.onHashChange.bind(this))
+    // 件套
     window.addEventListener('load', this.onHashChange.bind(this))
   }
 
   onHashChange() {
     // #/index
+    console.log(window.location.hash)
     this.app.current = window.location.hash.slice(1) || '/'
   }
 }
 
 // 插件接受Vue构造函数
-Vuerouter.install = function(_vue) {
+KRouter.install = function(_vue) {
   Vue = _vue // 保存 Vue 构造函数
   console.log(this)
   // 混入：执行挂载操作
@@ -101,4 +106,4 @@ Vuerouter.install = function(_vue) {
     }
   })
 }
-export default Vuerouter
+export default KRouter

@@ -1,17 +1,9 @@
 <template>
   <div>
-    <renderText :level="1" @changeTest="changeTest">
-      <div>
-        test
-      </div>
-      <div>
+    <renderText :level="1" my-tnner-thml="这是子元素" @changeTest="changeTest">
+      <div slot="child1">
         fsd
       </div>
-      <template v:slot="name">
-        <div>
-          this is slot
-        </div>
-      </template>
     </renderText>
     <!-- <renderText :level="2">
       我是2

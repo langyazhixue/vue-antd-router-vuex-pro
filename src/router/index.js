@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import AppLayout from '@/layout/index'
 import { pathParameterToJson } from '@/utils/url'
-import componentsRouter from './modules/components'
+// import componentsRouter from './modules/components'
 // import nestedRouter from './modules/nested'
 // 应用插件，做了什么？install
 // install 里面做了什么/
@@ -78,20 +78,20 @@ export const constantRouterMap = [
       }
     ]
   },
-  componentsRouter,
+  // componentsRouter,
   // nestedRouter,
-  {
-    path: '/test',
-    component: AppLayout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/testView/index'),
-        name: 'testView',
-        meta: { title: 'testView', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
+  // {
+  //   path: '/test',
+  //   component: AppLayout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/testView/index'),
+  //       name: 'testView',
+  //       meta: { title: 'testView', icon: 'iconshiyongwendang' }
+  //     }
+  //   ]
+  // },
   {
     path: '/form',
     component: AppLayout,
@@ -117,6 +117,18 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/functional',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/functional/index'),
+        name: 'functional',
+        meta: { title: 'vue函数式组件', icon: 'iconshiyongwendang' }
+      }
+    ]
+  },
+  {
     path: '/render',
     component: AppLayout,
     children: [
@@ -125,6 +137,18 @@ export const constantRouterMap = [
         component: () => import('@/views/render/index'),
         name: 'render',
         meta: { title: 'render渲染函数', icon: 'iconshiyongwendang' }
+      }
+    ]
+  },
+  {
+    path: '/communicate',
+    component: AppLayout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/communicate/index'),
+        name: 'communicate',
+        meta: { title: 'vue通信demo', icon: 'iconshiyongwendang' }
       }
     ]
   },
