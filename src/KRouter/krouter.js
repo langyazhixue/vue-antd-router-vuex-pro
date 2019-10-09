@@ -94,7 +94,6 @@ KRouter.install = function(_vue) {
   Vue = _vue // 保存 Vue 构造函数
   console.log(this)
   // 混入：执行挂载操作
-
   Vue.mixin({
     beforeCreate() {
       // 只有根组件执行一次 实例存在后才会执行

@@ -1,8 +1,6 @@
 import KRouter from './krouter'
 import Vue from 'vue'
-
 Vue.use(KRouter)
-
 export default new KRouter({
   routes: [
     {

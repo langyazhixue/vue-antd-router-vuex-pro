@@ -83,12 +83,15 @@ class Compile {
       // k-text = 'test'
       const attrName = attr.name
       const exp = attr.value
-      if(attrName.indexOf('k-') ===0) {
+      if(this.isDirective(attrName)) {
         // 指令 k-text k-model k-html
         const dir = attrName.substring(2) // text 
         this[dir] && this[dir](node,exp) // 也需要进行依赖收集
       }
     })
+  }
+  isDirective(attr) {
+    return attr.indexOf("k-") == 0;
   }
   text(node,exp) {
     this.update(node,exp,'text')

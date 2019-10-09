@@ -1,6 +1,5 @@
 // Kvue 类：
 // 1. 对传入data对象执行响应化处理
-
 class KVue {
   constructor(options) {
     // 保存下选项
@@ -10,7 +9,6 @@ class KVue {
     // 对 传入 data 对象 进行相应化处理
     this.observe(this.$data)
     // 配置一个代理
-
     // new Watcher (this,'test')
     // this.test; // 读取属性，触发收集
     new Compile(options.el, this)
