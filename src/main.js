@@ -3,7 +3,7 @@ import App from './App'
 // import router from './router'
 
 // 用自己写的router
-import router from './KRouter/router'
+import router from './router'
 import store from './store'
 import i18n from './lang'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
