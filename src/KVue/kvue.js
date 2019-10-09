@@ -55,6 +55,7 @@ class KVue {
         // 在 set 的时候触发dep的notify来通知所有的watcher对象更新视图
         val = newVal //  必包
         dep.notify()
+        console.log(key + '变化', val, ' -> ', newVal)
       }
     })
   }
