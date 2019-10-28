@@ -49,6 +49,8 @@ new Vue({
   render: h => h(App)
 })
 
+import { test } from './utils/module/index'
+test()
 // var EJS = require('ejs')
 // var my_supplies = { supplies: ['mop', 'broom', 'duster'] }
 // var result = new EJS({ url: 'test.ejs' }).render(my_supplies)
