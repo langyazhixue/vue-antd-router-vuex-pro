@@ -8,18 +8,18 @@ const componentsRouter = {
     icon: 'iconshiyongwendang'
   },
   children: [
-    {
-      path: 'upload',
-      component: () => import('@/views/components-demo/upload'),
-      name: 'Upload',
-      meta: { title: 'upload' }
-    },
-    {
-      path: 'sticky',
-      component: () => import('@/views/components-demo/sticky'),
-      name: 'Sticky',
-      meta: { title: 'sticky' }
-    }
+    // {
+    //   path: 'upload',
+    //   component: () => import('@/views/components-demo/upload'),
+    //   name: 'Upload',
+    //   meta: { title: 'upload' }
+    // },
+    // {
+    //   path: 'sticky',
+    //   component: () => import('@/views/components-demo/sticky'),
+    //   name: 'Sticky',
+    //   meta: { title: 'sticky' }
+    // }
   ]
 }
 export default componentsRouter

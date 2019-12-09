@@ -1,7 +1,7 @@
 <template>
   <div class="app--header--logo">
     <div class="app--login--inner">
-      <img src="/static/img/logo.png" class="app--login--logo">
+      <img src="@/assets/img/logo.png" class="app--login--logo">
       <h1
         class="app--login--text"
         :style="{

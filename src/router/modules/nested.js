@@ -10,21 +10,21 @@ const nestedRouter = {
   meta: {
     title: 'nested',
     icon: 'iconshiyongwendang'
-  },
-  children: [
-    {
-      path: 'menu1',
-      component: () => import('@/views/nested/menu1/index'), // Parent router-view
-      name: 'Menu1',
-      meta: { title: 'menu1', icon: 'iconshiyongwendang' }
-    },
-    {
-      path: 'menu2',
-      name: 'Menu2',
-      component: () => import('@/views/nested/menu2/index'),
-      meta: { title: 'menu2', icon: 'iconshiyongwendang' }
-    }
-  ]
+  }
+  // children: [
+  //   {
+  //     path: 'menu1',
+  //     component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //     name: 'Menu1',
+  //     meta: { title: 'menu1', icon: 'iconshiyongwendang' }
+  //   },
+  //   {
+  //     path: 'menu2',
+  //     name: 'Menu2',
+  //     component: () => import('@/views/nested/menu2/index'),
+  //     meta: { title: 'menu2', icon: 'iconshiyongwendang' }
+  //   }
+  // ]
 }
 
 export default nestedRouter

@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import AppLayout from '@/layout/index'
 import { pathParameterToJson } from '@/utils/url'
+import study from './modules/study'
 // import componentsRouter from './modules/components'
 // import nestedRouter from './modules/nested'
 // 应用插件，做了什么？install
@@ -32,10 +33,14 @@ export const constantRouterMap = [
   {
     path: '',
     component: AppLayout,
+    meta: {
+      title: '首页',
+      icon: 'iconshiyongwendang'
+    },
     children: [
       {
         path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
+        component: () => import('@/views/dashBoard/index'),
         name: 'DashBoard',
         meta: { title: 'dashboard', icon: 'iconshiyongwendang' }
       }
@@ -44,7 +49,10 @@ export const constantRouterMap = [
   {
     path: '/documentation',
     component: AppLayout,
-
+    meta: {
+      title: '文档',
+      icon: 'iconshiyongwendang'
+    },
     children: [
       {
         path: 'index',
@@ -57,6 +65,10 @@ export const constantRouterMap = [
   {
     path: '/guide',
     component: AppLayout,
+    meta: {
+      title: 'guide',
+      icon: 'iconshiyongwendang'
+    },
     children: [
       {
         path: 'index',
@@ -66,18 +78,7 @@ export const constantRouterMap = [
       }
     ]
   },
-  {
-    path: '/icon',
-    component: AppLayout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/svgIcons/index'),
-        name: 'Icons',
-        meta: { title: 'icons', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
+  study,
   // componentsRouter,
   // nestedRouter,
   // {
@@ -92,66 +93,6 @@ export const constantRouterMap = [
   //     }
   //   ]
   // },
-  {
-    path: '/form',
-    component: AppLayout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/form/index'),
-        name: 'form',
-        meta: { title: 'form', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
-  {
-    path: '/tree',
-    component: AppLayout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/tree/index'),
-        name: 'tree',
-        meta: { title: '递归组件树1', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
-  {
-    path: '/functional',
-    component: AppLayout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/functional/index'),
-        name: 'functional',
-        meta: { title: 'vue函数式组件', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
-  {
-    path: '/render',
-    component: AppLayout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/render/index'),
-        name: 'render',
-        meta: { title: 'render渲染函数', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
-  {
-    path: '/communicate',
-    component: AppLayout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/communicate/index'),
-        name: 'communicate',
-        meta: { title: 'vue通信demo', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
   {
     path: '*',
     component: () => import('@/views/404/index'),
