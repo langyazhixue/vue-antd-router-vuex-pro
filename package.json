@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/langyazhixue/vue-antd-route-veux-pro#readme",
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
