@@ -1,39 +1,43 @@
 <template>
-  <a-breadcrumb class='app--breadcrumb--container' separator="/">
-    <template
-      v-for='(item, $index) in matched'
+  <a-breadcrumb class="app--breadcrumb--container" separator="/">
+    <div
+      v-for="(item, $index) in matched"
+      :key=" $index"
     >
-      <a-breadcrumb-item
-      >
-        <router-link class='redirect'  v-if='$index === 0' :to='{
-          path:item.path
-        }'>
-            {{item.meta.title}}
+      <a-breadcrumb-item>
+        <router-link
+          v-if="$index === 0"
+          class="redirect"
+          :to="{
+            path:item.path
+          }"
+        >
+          {{ item.meta.title }}
         </router-link>
-        <span v-else>{{item.meta.title}}</span>
+        <span v-else>{{ item.meta.title }}</span>
       </a-breadcrumb-item>
-    </template>
+    </div>
   </a-breadcrumb>
 </template>
 <script>
 export default {
-  name:'AppBreadcrumb',
-  data(){
+  name: 'AppBreadcrumb',
+  data() {
     return {
-      matched:[]
+      matched: []
     }
   },
-  watch:{
+  watch: {
     $route() {
       this.getBreadcrumb()
     }
   },
-  created(){
+  created() {
     this.getBreadcrumb()
   },
-  methods:{
-    getBreadcrumb(){
-      let matched =  this.$route.matched.filter(item => {
+  methods: {
+    getBreadcrumb() {
+      let matched = this.$route.matched.filter(item => {
         return item.name
       })
       const first = matched[0]

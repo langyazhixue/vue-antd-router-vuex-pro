@@ -13,7 +13,7 @@
   output: {
     path: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/dist',
     filename: 'js/[name].js',
-    publicPath: '/',
+    publicPath: '/best-practice/',
     chunkFilename: 'js/[name].js'
   },
   resolve: {
@@ -50,15 +50,13 @@
       {
         test: /\.vue$/,
         use: [
-          /* config.module.rule('vue').use('cache-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_cache-loader@4.1.0@cache-loader/dist/cjs.js',
             options: {
               cacheDirectory: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/.cache/vue-loader',
-              cacheIdentifier: '1aec77df'
+              cacheIdentifier: 'adb7f46a'
             }
           },
-          /* config.module.rule('vue').use('vue-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-loader@15.7.2@vue-loader/lib/index.js',
             options: {
@@ -66,7 +64,7 @@
                 whitespace: 'condense'
               },
               cacheDirectory: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/.cache/vue-loader',
-              cacheIdentifier: '1aec77df'
+              cacheIdentifier: 'adb7f46a'
             }
           }
         ]
@@ -75,7 +73,6 @@
       {
         test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
         use: [
-          /* config.module.rule('images').use('url-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_url-loader@2.3.0@url-loader/dist/cjs.js',
             options: {
@@ -94,7 +91,6 @@
       {
         test: /\.(svg)(\?.*)?$/,
         use: [
-          /* config.module.rule('svg').use('file-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_file-loader@4.3.0@file-loader/dist/cjs.js',
             options: {
@@ -107,7 +103,6 @@
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         use: [
-          /* config.module.rule('media').use('url-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_url-loader@2.3.0@url-loader/dist/cjs.js',
             options: {
@@ -126,7 +121,6 @@
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         use: [
-          /* config.module.rule('fonts').use('url-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_url-loader@2.3.0@url-loader/dist/cjs.js',
             options: {
@@ -149,7 +143,6 @@
           {
             resourceQuery: /vue/,
             use: [
-              /* config.module.rule('pug').oneOf('pug-vue').use('pug-plain-loader') */
               {
                 loader: 'pug-plain-loader'
               }
@@ -158,11 +151,9 @@
           /* config.module.rule('pug').oneOf('pug-template') */
           {
             use: [
-              /* config.module.rule('pug').oneOf('pug-template').use('raw') */
               {
                 loader: 'raw-loader'
               },
-              /* config.module.rule('pug').oneOf('pug-template').use('pug-plain-loader') */
               {
                 loader: 'pug-plain-loader'
               }
@@ -178,7 +169,6 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('css').oneOf('vue-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -186,9 +176,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('css').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -197,7 +186,6 @@
                   }
                 }
               },
-              /* config.module.rule('css').oneOf('vue-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -210,7 +198,6 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('css').oneOf('vue').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -218,15 +205,13 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('css').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('css').oneOf('vue').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -239,7 +224,6 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('css').oneOf('normal-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -247,9 +231,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('css').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -258,7 +241,6 @@
                   }
                 }
               },
-              /* config.module.rule('css').oneOf('normal-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -270,7 +252,6 @@
           /* config.module.rule('css').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('css').oneOf('normal').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -278,15 +259,13 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('css').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('css').oneOf('normal').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -305,7 +284,6 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('postcss').oneOf('vue-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -313,9 +291,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('postcss').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -324,7 +301,6 @@
                   }
                 }
               },
-              /* config.module.rule('postcss').oneOf('vue-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -337,7 +313,6 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('postcss').oneOf('vue').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -345,15 +320,13 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('postcss').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('postcss').oneOf('vue').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -366,7 +339,6 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('postcss').oneOf('normal-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -374,9 +346,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('postcss').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -385,7 +356,6 @@
                   }
                 }
               },
-              /* config.module.rule('postcss').oneOf('normal-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -397,7 +367,6 @@
           /* config.module.rule('postcss').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('postcss').oneOf('normal').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -405,15 +374,13 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('postcss').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('postcss').oneOf('normal').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
@@ -432,7 +399,6 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('scss').oneOf('vue-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -440,9 +406,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('scss').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -451,14 +416,12 @@
                   }
                 }
               },
-              /* config.module.rule('scss').oneOf('vue-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('scss').oneOf('vue-modules').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -471,7 +434,6 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('scss').oneOf('vue').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -479,22 +441,19 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('scss').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('scss').oneOf('vue').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('scss').oneOf('vue').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -507,7 +466,6 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('scss').oneOf('normal-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -515,9 +473,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('scss').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -526,14 +483,12 @@
                   }
                 }
               },
-              /* config.module.rule('scss').oneOf('normal-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('scss').oneOf('normal-modules').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -545,7 +500,6 @@
           /* config.module.rule('scss').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('scss').oneOf('normal').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -553,22 +507,19 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('scss').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('scss').oneOf('normal').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('scss').oneOf('normal').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -587,7 +538,6 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('sass').oneOf('vue-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -595,9 +545,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('sass').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -606,14 +555,12 @@
                   }
                 }
               },
-              /* config.module.rule('sass').oneOf('vue-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('sass').oneOf('vue-modules').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -629,7 +576,6 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('sass').oneOf('vue').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -637,22 +583,19 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('sass').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('sass').oneOf('vue').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('sass').oneOf('vue').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -668,7 +611,6 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('sass').oneOf('normal-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -676,9 +618,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('sass').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -687,14 +628,12 @@
                   }
                 }
               },
-              /* config.module.rule('sass').oneOf('normal-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('sass').oneOf('normal-modules').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -709,7 +648,6 @@
           /* config.module.rule('sass').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('sass').oneOf('normal').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -717,22 +655,19 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('sass').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('sass').oneOf('normal').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('sass').oneOf('normal').use('sass-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_sass-loader@8.0.0@sass-loader/dist/cjs.js',
                 options: {
@@ -754,7 +689,6 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('less').oneOf('vue-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -762,9 +696,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('less').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -773,18 +706,17 @@
                   }
                 }
               },
-              /* config.module.rule('less').oneOf('vue-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('less').oneOf('vue-modules').use('less-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_less-loader@5.0.0@less-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false
+                  sourceMap: false,
+                  javascriptEnabled: true
                 }
               }
             ]
@@ -793,7 +725,6 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('less').oneOf('vue').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -801,26 +732,24 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('less').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('less').oneOf('vue').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('less').oneOf('vue').use('less-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_less-loader@5.0.0@less-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false
+                  sourceMap: false,
+                  javascriptEnabled: true
                 }
               }
             ]
@@ -829,7 +758,6 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('less').oneOf('normal-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -837,9 +765,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('less').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -848,18 +775,17 @@
                   }
                 }
               },
-              /* config.module.rule('less').oneOf('normal-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('less').oneOf('normal-modules').use('less-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_less-loader@5.0.0@less-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false
+                  sourceMap: false,
+                  javascriptEnabled: true
                 }
               }
             ]
@@ -867,7 +793,6 @@
           /* config.module.rule('less').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('less').oneOf('normal').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -875,26 +800,24 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('less').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('less').oneOf('normal').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('less').oneOf('normal').use('less-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_less-loader@5.0.0@less-loader/dist/cjs.js',
                 options: {
-                  sourceMap: false
+                  sourceMap: false,
+                  javascriptEnabled: true
                 }
               }
             ]
@@ -909,7 +832,6 @@
           {
             resourceQuery: /module/,
             use: [
-              /* config.module.rule('stylus').oneOf('vue-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -917,9 +839,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -928,14 +849,12 @@
                   }
                 }
               },
-              /* config.module.rule('stylus').oneOf('vue-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('vue-modules').use('stylus-loader') */
               {
                 loader: 'stylus-loader',
                 options: {
@@ -949,7 +868,6 @@
           {
             resourceQuery: /\?vue/,
             use: [
-              /* config.module.rule('stylus').oneOf('vue').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -957,22 +875,19 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('stylus').oneOf('vue').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('vue').use('stylus-loader') */
               {
                 loader: 'stylus-loader',
                 options: {
@@ -986,7 +901,6 @@
           {
             test: /\.module\.\w+$/,
             use: [
-              /* config.module.rule('stylus').oneOf('normal-modules').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -994,9 +908,8 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -1005,14 +918,12 @@
                   }
                 }
               },
-              /* config.module.rule('stylus').oneOf('normal-modules').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('normal-modules').use('stylus-loader') */
               {
                 loader: 'stylus-loader',
                 options: {
@@ -1025,7 +936,6 @@
           /* config.module.rule('stylus').oneOf('normal') */
           {
             use: [
-              /* config.module.rule('stylus').oneOf('normal').use('vue-style-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_vue-style-loader@4.1.2@vue-style-loader/index.js',
                 options: {
@@ -1033,22 +943,19 @@
                   shadowMode: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.2.1@css-loader/dist/cjs.js',
+                loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_css-loader@3.3.0@css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
                 }
               },
-              /* config.module.rule('stylus').oneOf('normal').use('postcss-loader') */
               {
                 loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_postcss-loader@3.0.0@postcss-loader/src/index.js',
                 options: {
                   sourceMap: false
                 }
               },
-              /* config.module.rule('stylus').oneOf('normal').use('stylus-loader') */
               {
                 loader: 'stylus-loader',
                 options: {
@@ -1067,15 +974,13 @@
           function () { /* omitted long function */ }
         ],
         use: [
-          /* config.module.rule('js').use('cache-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_cache-loader@4.1.0@cache-loader/dist/cjs.js',
             options: {
               cacheDirectory: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/.cache/babel-loader',
-              cacheIdentifier: '4bff89ab'
+              cacheIdentifier: '59fcb487'
             }
           },
-          /* config.module.rule('js').use('babel-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_babel-loader@8.0.6@babel-loader/lib/index.js'
           }
@@ -1090,7 +995,6 @@
           '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_@vue_cli-service@4.1.1@@vue/cli-service/lib'
         ],
         use: [
-          /* config.module.rule('eslint').use('eslint-loader') */
           {
             loader: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_eslint-loader@2.2.1@eslint-loader/index.js',
             options: {
@@ -1100,7 +1004,7 @@
                 '.vue'
               ],
               cache: true,
-              cacheIdentifier: '7707b742',
+              cacheIdentifier: 'e219901c',
               emitWarning: false,
               emitError: false,
               eslintPath: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_eslint@5.16.0@eslint',
@@ -1130,9 +1034,19 @@
       }
     },
     minimizer: [
-      /* config.optimization.minimizer('terser') */
-      new TerserPlugin(
-        {
+      {
+        options: {
+          test: /\.m?js(\?.*)?$/i,
+          chunkFilter: () => true,
+          warningsFilter: () => true,
+          extractComments: false,
+          sourceMap: true,
+          cache: true,
+          cacheKeys: defaultCacheKeys => defaultCacheKeys,
+          parallel: true,
+          include: undefined,
+          exclude: undefined,
+          minify: undefined,
           terserOptions: {
             compress: {
               arrows: false,
@@ -1162,13 +1076,9 @@
             mangle: {
               safari10: true
             }
-          },
-          sourceMap: true,
-          cache: true,
-          parallel: true,
-          extractComments: false
+          }
         }
-      )
+      }
     ]
   },
   plugins: [
@@ -1179,7 +1089,7 @@
       {
         'process.env': {
           NODE_ENV: '"development"',
-          BASE_URL: '"/"'
+          BASE_URL: '"/best-practice/"'
         }
       }
     ),
@@ -1200,7 +1110,7 @@
     new HtmlWebpackPlugin(
       {
         templateParameters: function () { /* omitted long function */ },
-        template: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/node_modules/_@vue_cli-service@4.1.1@@vue/cli-service/lib/config/index-default.html'
+        template: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/public/index.html'
       }
     ),
     /* config.plugin('preload') */
@@ -1220,11 +1130,29 @@
         rel: 'prefetch',
         include: 'asyncChunks'
       }
+    ),
+    /* config.plugin('copy') */
+    new CopyPlugin(
+      [
+        {
+          from: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/public',
+          to: '/Users/jiaxiaoxiao/Documents/my/vue/vue-antd-router-vuex-pro/dist',
+          toType: 'dir',
+          ignore: [
+            '.DS_Store',
+            {
+              glob: 'index.html',
+              matchBase: false
+            }
+          ]
+        }
+      ]
     )
   ],
   entry: {
     app: [
       './src/main.js'
     ]
-  }
+  },
+  name: 'vue项目实战'
 }

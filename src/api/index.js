@@ -1,5 +1,5 @@
 const apiMap = {
-  login:'/user/login'
+  login: '/user/login'
 }
 
 export const api = apiMap
