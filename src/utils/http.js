@@ -14,7 +14,7 @@ const axiosInstance = axios.create()
 /*
   设置超时15秒
 */
-axiosInstance.defaults.timeout = 15 * 1000
+axiosInstance.defaults.timeout = 15 * 1000 // 超时时间15秒
 axiosInstance.defaults.headers['Content-Type'] = 'application/json; charset=utf-8'
 
 /*
