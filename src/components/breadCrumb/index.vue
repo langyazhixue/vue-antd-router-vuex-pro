@@ -4,8 +4,9 @@
       v-for="(item, $index) in matched"
       :key=" $index"
     >
-      <span v-if="item.redirect==='noRedirect' || $index === (matched.length-1)">{{ item.meta.title }}</span>
-      <router-link
+      <span v-if="item.redirect==='noRedirect' || $index === (matched.length-1)" class="no-redirect">{{ item.meta.title }}</span>
+      <a v-else class="redirect" @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+      <!-- <router-link
         v-else
         class="redirect"
         :to="{
@@ -13,12 +14,12 @@
         }"
       >
         {{ item.meta.title }}
-      </router-link>
+      </router-link> -->
     </a-breadcrumb-item>
   </a-breadcrumb>
 </template>
 <script>
-import pathToRegexp from 'path-to-regexp'
+const pathToRegexp = require('path-to-regexp')
 export default {
   name: 'AppBreadcrumb',
   data() {
@@ -57,6 +58,7 @@ export default {
     },
     pathCompile(path) {
       const { params } = this.$route
+      console.log(pathToRegexp)
       const toPath = pathToRegexp.compile(path)
       return toPath(params)
     },
@@ -67,7 +69,8 @@ export default {
         this.$router.push(redirect)
       } else {
         // 编译path,避免存在路径参数
-        this.$router.push(this.pathCompile(path))
+        const compilePath = this.pathCompile(path)
+        this.$router.push(compilePath)
       }
     }
   }
@@ -77,18 +80,15 @@ export default {
 @import '~@/styles/variables.less';
 .app--breadcrumb--container.ant-breadcrumb {
   display: inline-block;
-  span {
-    color:@assistant-text-color !important;
-  }
-  span:last-child {
+  font-size: 14px;
+  .no-redirect {
     color:@assistant-text-color !important;
   }
   .redirect {
-    color:@primary-text-color;
+    color:@primary-text-color !important;
     &:hover{
       color:@primary-color;
     }
   }
-
 }
 </style>

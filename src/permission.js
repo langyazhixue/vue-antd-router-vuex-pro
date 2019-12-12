@@ -33,6 +33,7 @@ router.beforeEach(async(to, from, next) => {
           next({ ...to })
         } catch (error) {
           await store.dispatch('user/resetToken')
+          next()
           // 出错需要重置领跑并重新登陆(令牌过期，网络错误等原因)
           next({
             path: '/login',
