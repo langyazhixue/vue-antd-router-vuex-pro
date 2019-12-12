@@ -69,12 +69,23 @@ const componentsRouter = {
         roles: ['admin', 'editor']
       }
     },
+
     {
       path: '/study/svg',
       component: () => import('@/views/study/svgIcons/index'),
       name: 'tree',
       meta: {
         title: 'svg-spriate-loader应用',
+        icon: 'iconshiyongwendang',
+        roles: ['admin', 'editor']
+      }
+    },
+    {
+      path: '/study/directive',
+      component: () => import('@/views/study/directiveTest/index'),
+      name: 'directive',
+      meta: {
+        title: 'directive 学习',
         icon: 'iconshiyongwendang',
         roles: ['admin', 'editor']
       }

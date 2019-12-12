@@ -31,6 +31,7 @@ Vue.use(api)
 Vue.use($moment)
 
 Object.keys(directive).forEach((key) => {
+  // 注册指令
   Vue.directive(key, directive[key])
 })
 
