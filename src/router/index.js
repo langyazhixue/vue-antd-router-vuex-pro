@@ -3,12 +3,6 @@ import Vue from 'vue'
 import AppLayout from '@/layout/index'
 import { pathParameterToJson } from '@/utils/url'
 import study from './modules/study'
-// import componentsRouter from './modules/components'
-// import nestedRouter from './modules/nested'
-// 应用插件，做了什么？install
-// install 里面做了什么/
-// 1. 挂载 $router
-// 2. 注册组件 <router-view><router-link>
 Vue.use(VueRouter)
 
 /**
@@ -18,6 +12,9 @@ Vue.use(VueRouter)
     icon: 'svg-name'             the icon show in the sidebar
  * }
 */
+
+// 基于角色去控制路由
+// 常量路由
 export const constantRouterMap = [
   {
     path: '/login',
@@ -47,53 +44,6 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/documentation',
-    component: AppLayout,
-    meta: {
-      title: '文档',
-      icon: 'iconshiyongwendang'
-    },
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'documentation', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
-  {
-    path: '/guide',
-    component: AppLayout,
-    meta: {
-      title: 'guide',
-      icon: 'iconshiyongwendang'
-    },
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/guide/index'),
-        name: 'Guide',
-        meta: { title: 'guide', icon: 'iconshiyongwendang' }
-      }
-    ]
-  },
-  study,
-  // componentsRouter,
-  // nestedRouter,
-  // {
-  //   path: '/test',
-  //   component: AppLayout,
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       component: () => import('@/views/testView/index'),
-  //       name: 'testView',
-  //       meta: { title: 'testView', icon: 'iconshiyongwendang' }
-  //     }
-  //   ]
-  // },
-  {
     path: '*',
     component: () => import('@/views/404/index'),
     name: 'errPage',
@@ -101,6 +51,49 @@ export const constantRouterMap = [
   }
 ]
 
+// 动态路由
+export const asyncRoutes = [{
+  path: '/documentation',
+  component: AppLayout,
+  meta: {
+    title: '文档',
+    icon: 'iconshiyongwendang'
+  },
+  children: [
+    {
+      path: 'index',
+      component: () => import('@/views/documentation/index'),
+      name: 'Documentation',
+      meta: {
+        title: 'documentation',
+        icon: 'iconshiyongwendang',
+        roles: ['admin', 'editor']
+      }
+    }
+  ]
+},
+{
+  path: '/guide',
+  component: AppLayout,
+  meta: {
+    title: 'guide',
+    icon: 'iconshiyongwendang'
+  },
+  children: [
+    {
+      path: 'index',
+      component: () => import('@/views/guide/index'),
+      name: 'Guide',
+      meta: {
+        title: 'guide',
+        icon: 'iconshiyongwendang',
+        roles: ['admin', 'editor']
+      }
+    }
+  ]
+},
+study
+]
 const router = new VueRouter({
   mode: 'hash',
   routes: constantRouterMap,

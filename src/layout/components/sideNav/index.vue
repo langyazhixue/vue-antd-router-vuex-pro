@@ -4,7 +4,7 @@
     theme="light"
     class="has--logo"
   >
-    <span v-show="false">{{ defaultOpenKeys }}{{ isCollapsed }}</span>
+    <span v-show="false">{{ defaultOpenKeys }}{{ isCollapsed }}{{ routerMap }}</span>
     <app-logo-view :is-collapsed="isCollapsed" />
     <a-menu
       theme="dark"
@@ -63,6 +63,7 @@ const path = require('path')
 import AppItem from './components/item'
 import AppLogoView from './components/logo'
 import { generateTitle } from '@/utils/i18n'
+// import { mapGetters } from 'vuex'
 export default {
   name: 'AppSideNav',
   components: {
@@ -79,10 +80,12 @@ export default {
       const collapsed = this.$store.state.app.isCollapsed
       return collapsed
     },
+    // ...mapGetters(['permission/permission_routes']),
     routerMap() {
-      const router = this.$store.state.app.routerMap
-      const routerArrPure = this.filterRouter(router)
-      return routerArrPure
+      const routes = this.$store.state.permission.routes
+      console.log(routes)
+      const routerFilter = this.filterRouter(routes)
+      return routerFilter
     },
     defaultSelectedKeys() {
       return [this.$route.path]

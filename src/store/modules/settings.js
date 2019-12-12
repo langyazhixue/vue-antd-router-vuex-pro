@@ -9,7 +9,7 @@ const state = {
   sidebarLogo
 }
 const mutations = {
-  CHANGE_SETTING: (state, payload) => {
+  'change-setting': (state, payload) => {
     if (state.hasOwnProperty(payload.key)) {
       state[payload.key] = payload.value
     }
@@ -18,7 +18,7 @@ const mutations = {
 
 const actions = {
   changeSetting({ commit }, payload) {
-    commit('CHANGE_SETTING', payload)
+    commit('change-setting', payload)
   }
 }
 

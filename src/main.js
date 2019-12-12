@@ -17,12 +17,11 @@ import http from '@/utils/http'
 import api from '@/api/index'
 import $moment from '@/utils/moment'
 import 'moment/locale/zh-cn'
+import '@/icons' // svg-icons 组件 在这里加载
 // globalComponent
-import SvgIcon from '@/components/svgIcon'// svg组件
 import IconFont from '@/utils/iconfont.js'
 import BreadCrumb from '@/components/breadCrumb'
 import RightPanel from '@/components/rightPanel'
-Vue.component(SvgIcon.name, SvgIcon)
 Vue.component('icon-font', IconFont)
 Vue.component(BreadCrumb.name, BreadCrumb)
 Vue.component(RightPanel.name, RightPanel)
@@ -44,7 +43,7 @@ Vue.prototype.$bus = new Vue()
 new Vue({
   el: '#app',
   router,
-  store: store,
+  store,
   i18n,
   render: h => h(App)
 })

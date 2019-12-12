@@ -45,6 +45,7 @@
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
     "sass-loader": "^8.0.0",
+    "svg-sprite-loader": "^4.1.6",
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {

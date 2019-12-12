@@ -15,16 +15,16 @@
       >
         <a-input
           v-decorator="[
-            'name',
+            'username',
             { rules: [{ required: true, message: '请输入用户名' }],
-              initialValue:initialFormData.name
+              initialValue:initialFormData.username
             }
           ]"
         />
       </a-form-item>
       <!-- 密码 -->
       <a-form-item
-        label="用户名"
+        label="密码"
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
       >
@@ -49,6 +49,7 @@
         >
           登陆
         </a-button>
+        <span>用户名填写admin,密码填写123456</span>
       </a-form-item>
     </a-form>
   </div>
@@ -63,6 +64,7 @@ const formTailLayout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 20, offset: 4 }
 }
+// import { mapActions } from 'vuex'
 export default {
   name: 'LoginView',
   data() {
@@ -71,25 +73,31 @@ export default {
       formItemLayout,
       formTailLayout,
       initialFormData: {
-        name: 'admin',
+        username: 'admin',
         password: '123456'
       }
     }
   },
   methods: {
+    // ...mapActions({
+    //   login: 'user/login'
+    // }),
     handleSubmit(e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values)
         }
-        this.$http.post(this.$api.login, values)
-          .then(res => {
-
+        this.$store.dispatch('user/login', {
+          userInfo: values
+        })
+          .then(() => {
+            this.$router.push({
+              // 从路由那边带过来
+              path: this.$route.query.redirect || '/'
+            })
           })
-          .catch(_ => {
-            console.log(_)
-          })
+        // 用户登陆
       })
     }
   }
