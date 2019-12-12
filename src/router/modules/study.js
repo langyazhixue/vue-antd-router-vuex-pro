@@ -7,6 +7,7 @@ const componentsRouter = {
     title: 'components',
     icon: 'iconshiyongwendang'
   },
+  redirect: '/study/communicate',
   children: [
     {
       path: '/study/communicate',

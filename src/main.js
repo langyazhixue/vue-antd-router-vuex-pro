@@ -47,7 +47,6 @@ new Vue({
   i18n,
   render: h => h(App)
 })
-
 import { test } from './utils/module/index'
 test()
 // var EJS = require('ejs')

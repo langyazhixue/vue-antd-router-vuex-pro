@@ -1,22 +1,20 @@
 <template>
   <a-breadcrumb class="app--breadcrumb--container" separator="/">
-    <div
+    <a-breadcrumb-item
       v-for="(item, $index) in matched"
       :key=" $index"
     >
-      <a-breadcrumb-item>
-        <router-link
-          v-if="$index === 0"
-          class="redirect"
-          :to="{
-            path:item.path
-          }"
-        >
-          {{ item.meta.title }}
-        </router-link>
-        <span v-else>{{ item.meta.title }}</span>
-      </a-breadcrumb-item>
-    </div>
+      <span v-if="$index === (matched.length-1)">{{ item.meta.title }}</span>
+      <router-link
+        v-else
+        class="redirect"
+        :to="{
+          path:item.path
+        }"
+      >
+        {{ item.meta.title }}
+      </router-link>
+    </a-breadcrumb-item>
   </a-breadcrumb>
 </template>
 <script>
@@ -40,6 +38,7 @@ export default {
       let matched = this.$route.matched.filter(item => {
         return item.name
       })
+      console.log(matched)
       const first = matched[0]
       if (first && first.name.trim().toLocaleLowerCase() !== 'Dashboard'.toLocaleLowerCase()) {
         matched = [{ path: '/dashboard', meta: { title: '首页' }}].concat(matched)

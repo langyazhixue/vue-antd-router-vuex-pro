@@ -32,30 +32,30 @@ const user = {
           }
         }, 1000)
       })
-    }
-  },
-  getInfo({ commit, state }) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        const roles = state.token === 'admin' ? ['admin'] : ['editor']
-        commit('set_roles', {
-          roles
+    },
+    getInfo({ commit, state }) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          const roles = state.token === 'admin' ? ['admin'] : ['editor']
+          commit('set_roles', {
+            roles
+          })
+          resolve({ roles })
+        }, 1000)
+      })
+    },
+    resetToken({ commit }) {
+      return new Promise(resolve => {
+        commit('set_token', {
+          username: ''
         })
-        resolve({ roles })
-      }, 1000)
-    })
-  },
-  resetToken({ commit }) {
-    return new Promise(resolve => {
-      commit('set_token', {
-        username: ''
+        commit('set_roles', {
+          roles: []
+        })
+        localStorage.removeItem('token')
+        resolve()
       })
-      commit('set_roles', {
-        roles: []
-      })
-      localStorage.removeItem('token')
-      resolve()
-    })
+    }
   }
 }
 export default user

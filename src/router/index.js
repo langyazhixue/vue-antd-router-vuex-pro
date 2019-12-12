@@ -34,6 +34,7 @@ export const constantRouterMap = [
       title: '首页',
       icon: 'iconshiyongwendang'
     },
+    redirect: '/dashboard',
     children: [
       {
         path: 'dashboard',
@@ -59,6 +60,7 @@ export const asyncRoutes = [{
     title: '文档',
     icon: 'iconshiyongwendang'
   },
+  redirect: '/documentation/index',
   children: [
     {
       path: 'index',
@@ -79,6 +81,7 @@ export const asyncRoutes = [{
     title: 'guide',
     icon: 'iconshiyongwendang'
   },
+  redirect: '/guide/index',
   children: [
     {
       path: 'index',

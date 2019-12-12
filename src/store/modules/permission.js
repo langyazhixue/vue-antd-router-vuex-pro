@@ -20,7 +20,6 @@ const permission = {
   actions: {
     // 路由生成，在得到用户角色后会第一时间调用
     generateRoutes({ commit }, payload) {
-      debugger
       const roles = payload.roles
       return new Promise(resolve => {
         const accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
