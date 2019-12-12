@@ -18,6 +18,7 @@
   </a-breadcrumb>
 </template>
 <script>
+import pathToRegexp from 'path-to-regexp'
 export default {
   name: 'AppBreadcrumb',
   data() {
@@ -26,25 +27,48 @@ export default {
     }
   },
   watch: {
-    $route() {
-      this.getBreadcrumb()
+    $route: {
+      handler(router) {
+        this.getBreadcrumb()
+      },
+      immediate: true
     }
-  },
-  created() {
-    this.getBreadcrumb()
   },
   methods: {
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => {
         return item.meta && item.meta.title
       })
-      console.log(this.$route.matched)
-      console.log(matched)
+      // console.log(this.$route.matched)
+      // console.log(matched)
+      // 跟路由
       const first = matched[0]
       if (first && first.name.trim().toLocaleLowerCase() !== 'Dashboard'.toLocaleLowerCase()) {
         matched = [{ path: '/dashboard', meta: { title: '首页' }}].concat(matched)
       }
       this.matched = matched
+    },
+    isHome(route) {
+      const name = route && route.name
+      if (!name) {
+        return false
+      }
+      return name.trim().toLocaleLowerCase() !== 'Dashboard'.toLocaleLowerCase()
+    },
+    pathCompile(path) {
+      const { params } = this.$route
+      const toPath = pathToRegexp.compile(path)
+      return toPath(params)
+    },
+    handleLink(item) {
+      const { redirect, path } = item
+      if (redirect) {
+        // 若存在重定向，按照重定向走
+        this.$router.push(redirect)
+      } else {
+        // 编译path,避免存在路径参数
+        this.$router.push(this.pathCompile(path))
+      }
     }
   }
 }
