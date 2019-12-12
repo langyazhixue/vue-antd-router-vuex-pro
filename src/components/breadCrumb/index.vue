@@ -1,11 +1,12 @@
 <template>
   <a-breadcrumb class="app--breadcrumb--container" separator="/">
-    <a-breadcrumb-item
-      v-for="(item, $index) in matched"
-      :key=" $index"
-    >
-      <span v-if="item.redirect==='noRedirect' || $index === (matched.length-1)" class="no-redirect">{{ item.meta.title }}</span>
-      <a v-else class="redirect" @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+    <transition-group name="breadcrumb" tag="div">
+      <a-breadcrumb-item
+        v-for="(item, $index) in matched"
+        :key=" $index"
+      >
+        <span v-if="item.redirect==='noRedirect' || $index === (matched.length-1)" class="no-redirect">{{ item.meta.title }}</span>
+        <a v-else class="redirect" @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
       <!-- <router-link
         v-else
         class="redirect"
@@ -15,7 +16,8 @@
       >
         {{ item.meta.title }}
       </router-link> -->
-    </a-breadcrumb-item>
+      </a-breadcrumb-item>
+    </transition-group>
   </a-breadcrumb>
 </template>
 <script>
@@ -91,4 +93,26 @@ export default {
     }
   }
 }
+.ant-breadcrumb>div {
+  span:last-child {
+    .ant-breadcrumb-separator {
+      display: none
+    }
+  }
+}
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all .5s;
+}
+ .breadcrumb-enter, .breadcrumb-leave-active {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+.breadcrumb-move {
+  transition: all .5s;
+}
+.breadcrumb-leave-active {
+  position: absolute;
+}
+
 </style>
