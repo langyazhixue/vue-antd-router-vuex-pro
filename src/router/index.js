@@ -15,6 +15,7 @@ Vue.use(VueRouter)
 
 // 基于角色去控制路由
 // 常量路由
+// 有多个子菜单的就配置 meta:{ title, icon },不然就由子路由的唯一个菜单去配置meta:{title,icon}
 export const constantRouterMap = [
   {
     path: '/login',
@@ -30,11 +31,6 @@ export const constantRouterMap = [
   {
     path: '',
     component: AppLayout,
-    meta: {
-      title: '首页',
-      icon: 'iconshiyongwendang'
-    },
-    redirect: '/dashboard',
     children: [
       {
         path: 'dashboard',
@@ -43,12 +39,6 @@ export const constantRouterMap = [
         meta: { title: 'dashboard', icon: 'iconshiyongwendang' }
       }
     ]
-  },
-  {
-    path: '*',
-    component: () => import('@/views/404/index'),
-    name: 'errPage',
-    hidden: true
   }
 ]
 
@@ -56,10 +46,6 @@ export const constantRouterMap = [
 export const asyncRoutes = [{
   path: '/documentation',
   component: AppLayout,
-  meta: {
-    title: '文档',
-    icon: 'iconshiyongwendang'
-  },
   redirect: '/documentation/index',
   children: [
     {
@@ -77,10 +63,6 @@ export const asyncRoutes = [{
 {
   path: '/guide',
   component: AppLayout,
-  meta: {
-    title: 'guide',
-    icon: 'iconshiyongwendang'
-  },
   redirect: '/guide/index',
   children: [
     {

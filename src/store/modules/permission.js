@@ -23,6 +23,13 @@ const permission = {
       const roles = payload.roles
       return new Promise(resolve => {
         const accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
+        const errRoute = {
+          path: '*',
+          component: () => import('@/views/404/index'),
+          name: 'errPage',
+          hidden: true
+        }
+        accessedRoutes.push(errRoute)
         commit('set_routes', {
           routes: accessedRoutes
         })

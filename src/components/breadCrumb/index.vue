@@ -4,7 +4,7 @@
       v-for="(item, $index) in matched"
       :key=" $index"
     >
-      <span v-if="$index === (matched.length-1)">{{ item.meta.title }}</span>
+      <span v-if="item.redirect==='noRedirect' || $index === (matched.length-1)">{{ item.meta.title }}</span>
       <router-link
         v-else
         class="redirect"
@@ -36,8 +36,9 @@ export default {
   methods: {
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => {
-        return item.name
+        return item.meta && item.meta.title
       })
+      console.log(this.$route.matched)
       console.log(matched)
       const first = matched[0]
       if (first && first.name.trim().toLocaleLowerCase() !== 'Dashboard'.toLocaleLowerCase()) {

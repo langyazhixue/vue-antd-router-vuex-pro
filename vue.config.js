@@ -5,7 +5,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  publicPath: '/best-practice',
+  // publicPath: '/best-practice',
   devServer: {
     port
   },

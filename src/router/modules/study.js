@@ -1,10 +1,10 @@
 import AppLayout from '@/layout/index'
 const componentsRouter = {
-  path: '/components',
+  path: '/study',
   component: AppLayout,
-  name: 'ComponentDemo',
+  name: 'study',
   meta: {
-    title: 'components',
+    title: '学习',
     icon: 'iconshiyongwendang'
   },
   redirect: '/study/communicate',
