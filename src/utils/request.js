@@ -38,7 +38,7 @@ service.interceptors.response.use(
     // 仅仅返回数据部分
     if (res.code !== 1) {
       showErrorMessage(res.message)
-      //  假设：10008 - 非法令牌； 10012-其他客户端已经登陆 10014-令牌过期
+      //  假设：10008 - 非法令牌； 10012-其他客户端已经登陆 10014-令牌过期 10024 未登陆
       if (res.code === 10008 || res.code === 10012 || res.code === 10014) {
         store.dispatch('user/resetToken').then(() => {
           location.reload()

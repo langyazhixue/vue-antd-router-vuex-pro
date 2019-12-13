@@ -5,13 +5,25 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
+// 服务启在7070，接口调用也在7070，就不存在跨域这个问题
+
 // const bodyParser = require('body-parser')
-const mock = require('./src/mock/index')
+// const mock = require('./src/mock_local/index')
 module.exports = {
   // publicPath: '/best-practice',
   devServer: {
     port,
-    before: mock
+    proxy: {
+      // 代理 /dev-api/user/login 到 http://127.0.0.1:3000/user/login
+      [process.env.VUE_APP_BASE_API]: {
+        target: 'http://127.0.0.1:3000/',
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
+    }
+    // before: mock
   },
   css: {
     loaderOptions: {
