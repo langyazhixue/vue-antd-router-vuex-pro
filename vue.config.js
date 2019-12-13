@@ -12,17 +12,17 @@ function resolve(dir) {
 module.exports = {
   // publicPath: '/best-practice',
   devServer: {
-    port,
-    proxy: {
-      // 代理 /dev-api/user/login 到 http://127.0.0.1:3000/user/login
-      [process.env.VUE_APP_BASE_API]: {
-        target: 'http://127.0.0.1:3000/',
-        changeOrigin: true,
-        pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
-        }
-      }
-    }
+    port
+    // proxy: {
+    //   // 代理 /dev-api/user/login 到 http://127.0.0.1:3000/user/login
+    //   [process.env.VUE_APP_BASE_API]: {
+    //     target: 'http://127.0.0.1:3000/',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       ['^' + process.env.VUE_APP_BASE_API]: ''
+    //     }
+    //   }
+    // }
     // before: mock
   },
   css: {

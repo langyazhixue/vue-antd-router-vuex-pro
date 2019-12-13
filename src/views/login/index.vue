@@ -52,6 +52,12 @@
         <span>用户名填写admin,密码填写123456</span>
       </a-form-item>
     </a-form>
+    <a-button
+      type="primary"
+      @click="mock"
+    >
+      测试mock 接口
+    </a-button>
   </div>
 </template>
 <script>
@@ -65,6 +71,7 @@ const formTailLayout = {
   wrapperCol: { span: 20, offset: 4 }
 }
 // import { mapActions } from 'vuex'
+
 export default {
   name: 'LoginView',
   data() {
@@ -82,6 +89,15 @@ export default {
     // ...mapActions({
     //   login: 'user/login'
     // }),
+    mock() {
+      this.$http({
+        url: '/api/test',
+        method: 'post'
+      })
+        .then(res => {
+          console.log(res)
+        })
+    },
     handleSubmit(e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {

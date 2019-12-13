@@ -12,8 +12,9 @@ import directive from '@/directive/index'
 import 'normalize.css'
 import '@/styles/index.less'
 import emitter from './mixins/emitter'
+import '@/mock/index'
 import './permission'
-import http from '@/utils/http'
+// import http from '@/utils/http'
 import api from '@/api/index'
 import $moment from '@/utils/moment'
 import 'moment/locale/zh-cn'
@@ -22,14 +23,16 @@ import '@/icons' // svg-icons 组件 在这里加载
 import IconFont from '@/utils/iconfont.js'
 import BreadCrumb from '@/components/breadCrumb'
 import RightPanel from '@/components/rightPanel'
+import service from '@/utils/request'
 Vue.component('icon-font', IconFont)
 Vue.component(BreadCrumb.name, BreadCrumb)
 Vue.component(RightPanel.name, RightPanel)
 Vue.use(Antd)
-Vue.use(http)
+// Vue.use(http)
 Vue.use(api)
 Vue.use($moment)
 
+Vue.prototype.$http = service
 Object.keys(directive).forEach((key) => {
   // 注册指令
   Vue.directive(key, directive[key])
