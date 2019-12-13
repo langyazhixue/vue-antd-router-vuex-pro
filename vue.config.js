@@ -4,10 +4,14 @@ const path = require('path')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
+
+// const bodyParser = require('body-parser')
+const mock = require('./src/mock/index')
 module.exports = {
   // publicPath: '/best-practice',
   devServer: {
-    port
+    port,
+    before: mock
   },
   css: {
     loaderOptions: {
