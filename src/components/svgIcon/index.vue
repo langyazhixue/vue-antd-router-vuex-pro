@@ -1,4 +1,5 @@
 <template>
+  <!-- use元素在SVG文档内取得目标节点，并在别的地方复制它们 -->
   <svg :class="svgClass" aria-hidden="true" v-on="$listerers">
     <use :xlink:href="iconName" />
   </svg>

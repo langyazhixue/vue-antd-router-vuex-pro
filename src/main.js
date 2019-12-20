@@ -24,9 +24,11 @@ import IconFont from '@/utils/iconfont.js'
 import BreadCrumb from '@/components/breadCrumb'
 import RightPanel from '@/components/rightPanel'
 import service from '@/utils/request'
+import SvgIconInline from '@/components/svgIconInline'
 Vue.component('icon-font', IconFont)
 Vue.component(BreadCrumb.name, BreadCrumb)
 Vue.component(RightPanel.name, RightPanel)
+Vue.component(SvgIconInline.name, SvgIconInline)
 Vue.use(Antd)
 // Vue.use(http)
 Vue.use(api)

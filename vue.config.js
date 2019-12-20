@@ -8,11 +8,11 @@ function resolve(dir) {
 // 服务启在7070，接口调用也在7070，就不存在跨域这个问题
 
 // const bodyParser = require('body-parser')
-// const mock = require('./src/mock_local/index')
+const mock = require('./src/mock/mock_local')
 module.exports = {
   // publicPath: '/best-practice',
   devServer: {
-    port
+    port,
     // proxy: {
     //   // 代理 /dev-api/user/login 到 http://127.0.0.1:3000/user/login
     //   [process.env.VUE_APP_BASE_API]: {
@@ -23,7 +23,7 @@ module.exports = {
     //     }
     //   }
     // }
-    // before: mock
+    before: mock
   },
   css: {
     loaderOptions: {
@@ -41,6 +41,8 @@ module.exports = {
     // 1. 让已有svgloader排除icons目录
     config.module.rule('svg')
       .exclude.add(resolve('src/icons'))
+      .end()
+      .exclude.add(resolve('src/components/svgIconInline'))
     // 2. 新增svg-sprite-loader
     // 起一个不同的名字
     config.module.rule('icons')
@@ -50,5 +52,12 @@ module.exports = {
       .use('svg-sprite-loader')
       .loader('svg-sprite-loader')
       .options({ symbolId: 'icon-[name]' })
+
+    config.module.rule('icons-inline')
+      .test(/\.svg$/)
+      .include.add(resolve('src/components/svgIconInline'))
+      .end()
+      .use('svg-inline-loader')
+      .loader('svg-inline-loader')
   }
 }

@@ -73,9 +73,19 @@ const componentsRouter = {
     {
       path: '/study/svg',
       component: () => import('@/views/study/svgIcons/index'),
-      name: 'tree',
+      name: 'svg',
       meta: {
-        title: 'svg-spriate-loader应用',
+        title: 'svg-sprite-loader应用',
+        icon: 'iconshiyongwendang',
+        roles: ['admin', 'editor']
+      }
+    },
+    {
+      path: '/study/svg-inline',
+      component: () => import('@/views/study/svgIconsInline/index'),
+      name: 'svg-inline',
+      meta: {
+        title: 'svg-inline-loader应用',
         icon: 'iconshiyongwendang',
         roles: ['admin', 'editor']
       }
