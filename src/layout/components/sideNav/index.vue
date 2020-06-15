@@ -116,8 +116,10 @@ export default {
   },
   methods: {
     goToComponent(item, key, keyPath) {
+      // console.log(item.item.$attrs)
+      // debugger
       this.$router.push({
-        path: item.item.$attrs.path
+        path: item.key
       })
     },
     filterRouter(router) {
