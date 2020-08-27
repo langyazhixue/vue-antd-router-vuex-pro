@@ -12,7 +12,8 @@ module.exports = {
   },
   extends: ['plugin:vue/recommended', 'eslint:recommended'],
   globals:{
-    animate:true
+    animate:true,
+    XLSX:true
   },
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue

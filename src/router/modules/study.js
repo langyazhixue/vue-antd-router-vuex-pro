@@ -99,6 +99,16 @@ const componentsRouter = {
         icon: 'iconshiyongwendang',
         roles: ['admin', 'editor']
       }
+    },
+    {
+      path: '/study/provideAndinject',
+      component: () => import('@/views/study/provideAndinject/index'),
+      name: 'provide',
+      meta: {
+        title: 'provide-inject学习',
+        icon: 'iconshiyongwendang',
+        roles: ['admin', 'editor']
+      }
     }
   ]
 }

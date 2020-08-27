@@ -8,22 +8,22 @@ function resolve(dir) {
 // 服务启在7070，接口调用也在7070，就不存在跨域这个问题
 
 // const bodyParser = require('body-parser')
-// const mock = require('./src/mock/mock_local')
+const mock = require('./src/mock/mock_local')
 module.exports = {
   // publicPath: '/best-practice',
   devServer: {
     port,
-    proxy: {
-      // 代理 /dev-api/user/login 到 http://127.0.0.1:3000/user/login
-      [process.env.VUE_APP_BASE_API]: {
-        target: 'http://127.0.0.1:3000/',
-        changeOrigin: true,
-        pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
-        }
-      }
-    }
-    // before: mock
+    // proxy: {
+    //   // 代理 /dev-api/user/login 到 http://127.0.0.1:3000/user/login
+    //   [process.env.VUE_APP_BASE_API]: {
+    //     target: 'http://127.0.0.1:3000/',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       ['^' + process.env.VUE_APP_BASE_API]: ''
+    //     }
+    //   }
+    // }
+    before: mock
   },
   css: {
     loaderOptions: {
@@ -59,5 +59,11 @@ module.exports = {
       .end()
       .use('svg-inline-loader')
       .loader('svg-inline-loader')
+    config.module.rule('csv')
+      .test(/\.csv$/)
+      .include.add(resolve('src'))
+      .end()
+      .use('csv-loader')
+      .loader('csv-loader')
   }
 }

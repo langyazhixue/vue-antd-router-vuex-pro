@@ -3,6 +3,9 @@ import Vue from 'vue'
 import AppLayout from '@/layout/index'
 import { pathParameterToJson } from '@/utils/url'
 import study from './modules/study'
+import g2 from './modules/g2'
+import f2 from './modules/f2'
+import excel from './modules/excel'
 Vue.use(VueRouter)
 
 /**
@@ -77,7 +80,10 @@ export const asyncRoutes = [{
     }
   ]
 },
-study
+study,
+g2,
+f2,
+excel
 ]
 const router = new VueRouter({
   mode: 'hash',

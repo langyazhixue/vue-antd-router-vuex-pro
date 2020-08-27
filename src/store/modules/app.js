@@ -2,7 +2,7 @@
 const app = {
   namespaced: true,
   state: {
-    isCollapsed: false, // 左边菜单是否收缩
+    isCollapsed: true, // 左边菜单是否收缩
     language: 'zh_CN' // zh_CN  en_US
   },
   mutations: {

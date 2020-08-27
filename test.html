@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <h1>test</h1>
+</body>
+<script>
+function splitExcelTitle(t) {
+      // A1 =>[A,1]
+      // AA1 =>[AA,1]
+      // 写一个数字正则
+      const reg = /[1-9]\d*$/
+      const match = t.match(reg)
+      console.log(match)
+      if (match) {
+        if (match.index) {
+          return [t.slice(0, match.index), t.slice(match.index)]
+        }
+      } else {
+        return []
+      }
+    }
+    console.log(splitExcelTitle('A1233'))
+
+    let arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    let t = 'C'
+    console.log(arr.slice(0,arr.indexOf(t)+1))
+</script>
+</html>

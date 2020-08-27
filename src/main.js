@@ -29,6 +29,11 @@ Vue.component('icon-font', IconFont)
 Vue.component(BreadCrumb.name, BreadCrumb)
 Vue.component(RightPanel.name, RightPanel)
 Vue.component(SvgIconInline.name, SvgIconInline)
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
+
 Vue.use(Antd)
 // Vue.use(http)
 Vue.use(api)
