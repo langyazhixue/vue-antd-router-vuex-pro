@@ -10,25 +10,17 @@
     <h1>test</h1>
 </body>
 <script>
-function splitExcelTitle(t) {
-      // A1 =>[A,1]
-      // AA1 =>[AA,1]
-      // 写一个数字正则
-      const reg = /[1-9]\d*$/
-      const match = t.match(reg)
-      console.log(match)
-      if (match) {
-        if (match.index) {
-          return [t.slice(0, match.index), t.slice(match.index)]
-        }
-      } else {
-        return []
+  function test() {
+    let res = ''
+    for(let i = 0; i < 10; i ++) {
+      console.log(i)
+      if(i === 3){
+        res = i
+        break;
       }
     }
-    console.log(splitExcelTitle('A1233'))
-
-    let arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    let t = 'C'
-    console.log(arr.slice(0,arr.indexOf(t)+1))
+    return res
+  }
+  console.log(test())
 </script>
 </html>

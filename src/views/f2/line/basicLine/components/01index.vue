@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import $ from 'jquery'
+import insertCss from 'insert-css'
 const data = [{
   date: '2017-06-05',
   value: 116
@@ -157,6 +159,7 @@ const data = [{
   date: '2017-07-24',
   value: 60
 }]
+
 import F2 from '@antv/f2'
 export default {
   name: 'F2BasicLineOne',
@@ -167,9 +170,53 @@ export default {
     }
   },
   mounted() {
+    this.cssInSert()
     this.render()
   },
   methods: {
+    cssInSert() {
+      insertCss(`
+        .chart-wrapper {
+          position: relative;
+        }
+        .f2-tooltip {
+          -moz-box-shadow: 1px 1px 0.5px 0.5px rgba(0, 0, 0, 0.3);
+          -webkit-box-shadow: 1px 1px 0.5px 0.5px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 1px 0.5px 0.5px rgba(0, 0, 0, 0.3);
+          position: absolute;
+          z-index: 99;
+          background-color: #1890ff;
+          padding: 5px;
+          border-radius: 3px;
+          text-align: center;
+          width: 120px;
+          opacity: 0;
+        }
+        .f2-tooltip:after {
+          content: " ";
+          width: 0;
+          height: 0;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-top: 8px solid #1890ff;
+          position: absolute;
+          left: 50%;
+          margin-left: -6px;
+          bottom: -8px;
+        }
+        .f2-tooltip span {
+          display: block;
+          color: #fff;
+        }
+        .f2-tooltip span:nth-child(1) {
+          font-size: 11px !important;
+        }
+        .f2-tooltip span:nth-child(2) {
+          font-size: 13px !important;
+        }
+      `)
+      $('\n  <div class="f2-tooltip">\n    <span> </span>\n    <span> </span>\n  </div>\n').insertBefore('#F2BasicLineOne')
+    },
     render() {
       const chart = new F2.Chart({
         el: document.getElementById('F2BasicLineOne'),
@@ -190,49 +237,75 @@ export default {
       })
       chart.tooltip({
         custom: true,
-        showXTip: true,
-        showYTip: true,
-        xTip(val) {
-          return val
+        // showXTip: true,
+        // showYTip: true,
+        // xTip(val) {
+        //   return val
+        // },
+        // yTip(val) {
+        //   return val
+        // },
+        // snap: true, // 是否将辅助线准确定位至数据点
+        // crosshairsType: 'xy',
+        // crosshairsStyle: {
+        //   lineCap: 'round',
+        //   lineWidth: 1,
+        //   lineJoin: 'round',
+        //   lineDash: [2]
+        // },
+        showCrosshairs: true,
+        onChange: function onChange(ev) {
+          const canvasOffsetTop = $('#F2BasicLineOne').position().top
+          const canvasOffsetLeft = $('#F2BasicLineOne').position().left
+          const currentData = ev.items[0]
+          const title = currentData.title
+          const value = currentData.value
+          const tooltipEl = $('.f2-tooltip')
+          // console.log(currentData)
+          // console.log(tooltipEl)
+          tooltipEl.html(['<span>' + title + '</span>', '<span>Web Visits: <b>' + value + '</b></span>'].join(''))
+          tooltipEl.css({
+            opacity: 1,
+            left: canvasOffsetLeft + currentData.x - tooltipEl.outerWidth() / 2 + 'px',
+            top: canvasOffsetTop + currentData.y - tooltipEl.outerHeight() - 15 + 'px'
+          })
         },
-        yTip(val) {
-          return val
-        },
-        snap: true, // 是否将辅助线准确定位至数据点
-        crosshairsType: 'xy',
-        crosshairsStyle: {
-          lineCap: 'round',
-          lineWidth: 1,
-          lineJoin: 'round',
-          lineDash: [2]
+        onHide: function onHide() {
+          const tooltipEl = $('.f2-tooltip')
+          tooltipEl.css({
+            opacity: 0
+          })
         }
       })
       chart.axis('date', {
         position: 'bottom',
         line: {
           top: true,
-          fill: '#000',
-          fillOpacity: 0.5,
-          stroke: 'red',
+          // fill: 'blue',
+          // fillOpacity: 0.5,
+          stroke: '#000',
           strokeOpacity: 0.5
         },
-        grid: {
+        // grid: {
+        //   top: true,
+        //   // fill: '#000',
+        //   // fillOpacity: 0.5,
+        //   stroke: '#000',
+        //   strokeOpacity: 1,
+        //   lineDash: [2]
+        // },
+        tickLine: {
           top: true,
           // fill: '#000',
           // fillOpacity: 0.5,
-          stroke: 'blue',
-          strokeOpacity: 1,
-          lineDash: [2]
-        },
-        tickLine: {
-          top: true,
-          fill: '#000',
-          fillOpacity: 0.5,
           stroke: 'red',
           strokeOpacity: 0.5
         },
         label: function(text, index, total) {
-          const textCfg = {}
+          console.log(text, index, total)
+          const textCfg = {
+            fill: 'red'
+          }
           if (index === 0) {
             textCfg.textAlign = 'left'
           } else if (index === total - 1) {
@@ -249,7 +322,7 @@ export default {
         .position('date*value')
         .color('value', ['red'])
         .style({
-          stroke: 'blue',
+          stroke: 'purple',
           lineWidth: 1
         })
       chart.render()
