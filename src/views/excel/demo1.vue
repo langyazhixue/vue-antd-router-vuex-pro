@@ -69,39 +69,6 @@ export default {
           colspan: ec - sc + 1,
           rowspan: er - sr + 1
         })
-
-        // if ((ec - sc) === 0) {
-        //   // 同一列，不同的行，属于行合并单元格
-        //   res.push({
-        //     conditionColumn: sc + 1, // 条件是列
-        //     conditionRow: sr,
-        //     colspan: 1,
-        //     rowspan: er - sr + 1
-        //   })
-        // } else if ((ec - sc) > 0) {
-        //   // 当行不一样的时候，分2中情况
-        //   // 1. 属于一列
-        //   // 2. 不属于同一列
-        //   if ((er - sr) === 0) {
-        //     // // 1. 属于一行
-        //     res.push({
-        //       conditionRow: sr,
-        //       conditionColumn: sc + 1,
-        //       colspan: ec - sc + 1,
-        //       rowspan: 1
-        //     })
-        //   } else if ((er - sr) > 0) {
-        //     // 2. 不属于同一行
-        //     // 应该是先合并列，再合并行
-        //     // const lenR = er - sr
-        //     res.push({
-        //       conditionRow: sr,
-        //       conditionColumn: sc + 1,
-        //       colspan: ec - sc + 1,
-        //       rowspan: er - sr + 1
-        //     })
-        //   }
-        // }
       })
       return res
     },
@@ -215,7 +182,6 @@ export default {
       const excelMerges = '!merges'
 
       if (worksheet[excelInfoKey]) {
-        this.spanInfo = worksheet[excelMerges] || []
         const excelInfo = worksheet[excelInfoKey].split(':')
         let excelInfoInfo = ''
         if (typeof (excelInfo) === 'string') {
@@ -240,6 +206,9 @@ export default {
         console.log(excelInfoInfo)
         console.log(this.tableHeaders)
         console.log(this.tableData)
+        this.$nextTick(() => {
+          this.spanInfo = worksheet[excelMerges] || []
+        })
       } else {
         console.log('是一张空表格')
       }
