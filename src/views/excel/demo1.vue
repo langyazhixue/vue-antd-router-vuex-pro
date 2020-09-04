@@ -29,7 +29,7 @@
           :prop="headers"
           align="center"
           :label="headers"
-          min-width="100"
+          min-width="140"
         />
       </el-table>
     </div>
@@ -51,6 +51,9 @@ export default {
       spanInfo: [] // 表格返回的合并单元格的信息
     }
   },
+  created() {
+    this.initTableHeasers()
+  },
   mounted() {
   },
   methods: {
@@ -63,16 +66,81 @@ export default {
         const sr = s.r // row
         const ec = e.c
         const er = e.r
-        res.push({
-          conditionRow: sr,
-          conditionColumn: sc + 1,
-          colspan: ec - sc + 1,
-          rowspan: er - sr + 1
-        })
+        // 放在这里处理单元格合并逻辑
+        // 分为 3种逻辑，
+        // 1. 同一列，合并行
+        // 2. 同一行，合并列
+        // 3. 不同行，不同列合并
+
+        // 同一行，合并列
+        const rIndex = er - sr // 0 er =0 sr =0
+        const cIndex = ec - sc // 1  ec =2 sc =1
+        if (rIndex === 0 && cIndex > 0) {
+          // 同一行，合并列
+          for (let i = 0; i <= cIndex; i++) {
+            if (i === 0) {
+              res.push({
+                conditionRow: sr,
+                conditionColumn: sc,
+                colspan: cIndex + 1,
+                rowspan: 1
+              })
+            } else {
+              res.push({
+                conditionRow: sr,
+                conditionColumn: sc + i,
+                colspan: 0,
+                rowspan: 1
+              })
+            }
+          }
+        } else if (rIndex > 0 && cIndex === 0) {
+          // 同一列，合并行
+          for (let j = 0; j <= rIndex; j++) {
+            if (j === 0) {
+              res.push({
+                conditionRow: sr,
+                conditionColumn: sc,
+                colspan: 1,
+                rowspan: rIndex + 1
+              })
+            } else {
+              res.push({
+                conditionRow: sr + j,
+                conditionColumn: sc,
+                colspan: 1,
+                rowspan: 0
+              })
+            }
+          }
+        } else if (rIndex > 0 && rIndex > 0) {
+          // 不同行，不同列
+          for (let i = 0; i <= rIndex; i++) {
+            for (let j = 0; j <= cIndex; j++) {
+              if (i === 0 && j === 0) {
+                res.push({
+                  conditionRow: sr + i,
+                  conditionColumn: sc + j,
+                  colspan: ec - sc + 1,
+                  rowspan: er - sr + 1
+                })
+              } else {
+                res.push({
+                  conditionRow: sr + i,
+                  conditionColumn: sc + j,
+                  colspan: 0,
+                  rowspan: 1
+                })
+              }
+            }
+          }
+        }
       })
       return res
     },
     arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+      // console.log(rowIndex)
+      // console.log(columnIndex)
       if (this.spanInfo.length === 0) {
         return [1, 1]
       } else {
@@ -80,8 +148,8 @@ export default {
         const parseSpanInfoArray = this.parseSpanInfo(this.spanInfo)
         for (let i = 0; i < parseSpanInfoArray.length; i++) {
           const item = parseSpanInfoArray[i]
-          if (columnIndex === item.conditionColumn) {
-            if (rowIndex === item.conditionRow) {
+          if (rowIndex === item.conditionRow) {
+            if (columnIndex === item.conditionColumn) {
               res = [item.rowspan, item.colspan]
             }
           }
@@ -151,7 +219,6 @@ export default {
         const obj = {}
         tableHeaders.map(headers => {
           obj[headers] = ''
-
           if (headers === this.numberTitle) {
             obj[headers] = i + 1
           }
@@ -197,7 +264,7 @@ export default {
           const res = this.splitExcelTitle(excelInfoInfo)
           if (res.length > 0) {
             const tableHeaders = this.gengerateTableHeaders(res[0])
-            tableHeaders.unshift(this.numberTitle)
+            // tableHeaders.unshift(this.numberTitle)
             this.tableHeaders = tableHeaders // 在表格前面加一列，显示 1，2，3，4
             this.tableLength = res[1]
             this.gengerateTableData(worksheet)
@@ -207,7 +274,9 @@ export default {
         console.log(this.tableHeaders)
         console.log(this.tableData)
         this.$nextTick(() => {
-          this.spanInfo = worksheet[excelMerges] || []
+          setTimeout(() => {
+            this.spanInfo = worksheet[excelMerges] || []
+          }, 200)
         })
       } else {
         console.log('是一张空表格')

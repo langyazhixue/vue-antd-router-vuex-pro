@@ -286,6 +286,11 @@ export default {
           stroke: '#000',
           strokeOpacity: 0.5
         },
+        grid: {
+          stroke: '#efefef',
+          lineDash: [2, 2, 2]
+        },
+        labelOffset: 6,
         // grid: {
         //   top: true,
         //   // fill: '#000',
@@ -296,9 +301,10 @@ export default {
         // },
         tickLine: {
           top: true,
+          lineWidth: 1,
           // fill: '#000',
           // fillOpacity: 0.5,
-          stroke: 'red',
+          stroke: '#ccc',
           strokeOpacity: 0.5
         },
         label: function(text, index, total) {

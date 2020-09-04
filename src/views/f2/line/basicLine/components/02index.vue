@@ -62,11 +62,22 @@ export default {
         showCrosshairs: true,
         showItemMarker: false,
         layout: 'vertical',
-        alwaysShow: true,
+        alwaysShow: false,
         background: {
           radius: 2,
           fill: '#1890FF',
           padding: [10, 10]
+        },
+        crosshairsStyle: {
+          lineDash: [2]
+        },
+        snap: false,
+        crosshairsType: 'xy',
+        showXTip: true,
+        showYTip: true,
+        yTip(val) {
+          // 返回值必须是对象
+          return val.toFixed(2)
         },
         onShow: function onShow(ev) {
           const items = ev.items
@@ -89,6 +100,10 @@ export default {
           return textCfg
         }
       })
+      chart.axis('value', {
+        grid: null
+      })
+
       chart.line().position('day*value').color('value', ['red'])
       chart.point().position('day*value').style({
         stroke: 'red',

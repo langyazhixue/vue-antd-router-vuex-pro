@@ -7,6 +7,7 @@
 
 <script>
 import F2 from '@antv/f2'
+// const Guide = require('@antv/f2/lib/plugin/guide')
 const data = [{
   time: '2016-08-08 00:00:00',
   tem: 10
@@ -53,6 +54,7 @@ export default {
         // pixelRatio: window.devicePixelRatio,
         pixelRatio: 2,
         width: 320
+        // plugins: Guide
       })
       this.chart = chart
       const defs = {
@@ -80,10 +82,25 @@ export default {
           return textCfg
         }
       })
-      chart.tooltip({
-        showCrosshairs: true,
-        crosshairsType: 'y',
-        snap: true
+      chart.tooltip(false)
+      // chart.tooltip({
+      //   showCrosshairs: true,
+      //   crosshairsType: 'y',
+      //   snap: true
+      // })
+      this.data.forEach(obj => {
+        chart.guide().text({
+          position: [obj.time, obj.tem],
+          content: obj.tem,
+          offsetY: -10,
+          style: {
+            textAlign: 'center',
+            fill: '#888',
+            opacity: 0.5,
+            fontWeight: 'bold',
+            fontSize: 10
+          }
+        })
       })
       chart.line().position('time*tem').shape('smooth')
       chart.point().position('time*tem').shape('smooth')
